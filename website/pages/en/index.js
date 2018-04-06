@@ -5,28 +5,52 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+const React = require("react");
 
-const CompLibrary = require('../../core/CompLibrary.js');
+const CompLibrary = require("../../core/CompLibrary.js");
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
-const siteConfig = require(process.cwd() + '/siteConfig.js');
+const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 function imgUrl(img) {
-  return siteConfig.baseUrl + 'img/' + img;
+  return siteConfig.baseUrl + "img/" + img;
 }
 
 function docUrl(doc, language) {
-  return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
+  return siteConfig.baseUrl + "docs/" + (language ? language + "/" : "") + doc;
 }
 
 function pageUrl(page, language) {
-  return siteConfig.baseUrl + (language ? language + '/' : '') + page;
+  return siteConfig.baseUrl + (language ? language + "/" : "") + page;
 }
 
+const FeatureTitle = props => <h2 className="projectTitle">{props.title}</h2>;
+
+const HomeCallToAction = props => {
+  let language = props.language || "";
+  return (
+    <Container padding={["bottom", "top"]}>
+      <div className="section promoSection">
+        <div className="promoRow">
+          <div className="pluginRowBlock">
+            <Button href="#try">GET STARTED</Button>
+            <Button href={docUrl("doc1.html", language)}>
+              LEARN THE BASICS
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
+};
+
 class Button extends React.Component {
+  static defaultProps = {
+    target: "_self"
+  };
+
   render() {
     return (
       <div className="pluginWrapper buttonWrapper">
@@ -38,178 +62,148 @@ class Button extends React.Component {
   }
 }
 
-Button.defaultProps = {
-  target: '_self',
-};
-
-const SplashContainer = props => (
-  <div className="homeContainer">
-    <div className="homeSplashFade">
-      <div className="wrapper homeWrapper">{props.children}</div>
-    </div>
-  </div>
-);
-
-const Logo = props => (
-  <div className="projectLogo">
-    <img src={props.img_src} />
-  </div>
-);
-
-const ProjectTitle = props => (
-  <h2 className="projectTitle">
-    {siteConfig.title}
-    <small>{siteConfig.tagline}</small>
-  </h2>
-);
-
-const PromoSection = props => (
-  <div className="section promoSection">
-    <div className="promoRow">
-      <div className="pluginRowBlock">{props.children}</div>
-    </div>
-  </div>
-);
-
 class HomeSplash extends React.Component {
   render() {
-    let language = this.props.language || '';
+    let language = this.props.language || "";
     return (
-      <SplashContainer>
-        <Logo img_src={imgUrl('docusaurus.svg')} />
-        <div className="inner">
-          <ProjectTitle />
-          <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html', language)}>Example Link</Button>
-            <Button href={docUrl('doc2.html', language)}>Example Link 2</Button>
-          </PromoSection>
+      <div className="homeContainer">
+        <div className="homeSplashFade">
+          <div className="wrapper homeWrapper">
+            <div className="projectLogo">{/* <img src="" /> */}</div>
+            <div className="inner">
+              <h2 className="projectTitle">
+                {siteConfig.title}
+                <small>{siteConfig.tagline}</small>
+              </h2>
+              <div className="section promoSection">
+                <div className="promoRow">
+                  <div className="pluginRowBlock">
+                    <Button href="#try">GET STARTED</Button>
+                    <Button href={docUrl("doc1.html", language)}>
+                      LEARN THE BASICS
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </SplashContainer>
+      </div>
     );
   }
 }
 
-const Block = props => (
-  <Container
-    padding={['bottom', 'top']}
-    id={props.id}
-    background={props.background}>
-    <GridBlock align="center" contents={props.children} layout={props.layout} />
-  </Container>
-);
+class Features extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <Container id={this.props.id} background={this.props.background}>
+          <FeatureTitle title="Build UI component and sync with data" />
+          <small style={{ fontSize: 15 }}>
+            Lasa Client makes it easy to sync your UI's with your restful store
+            by removing the complexity in writing imperative codes and replacing
+            these codes with declarative codes without complicating data flow.
+          </small>
+          <MarkdownBlock>
+            {`\`\`\` javascript 
+              <Query
+                operation="getPostCount"
+                options={{
+                  fetchPolicy: "network-only",
+                  config: { params: { category: "education" } }
+                }}
+              >
+                {(postCount, fetchMore, refetchQuery) => <Counter items={postCount.data} />}
+              </Query>
+          `}
+          </MarkdownBlock>
+        </Container>
+        <br />
+        <Container>
+          <FeatureTitle title="Build for both native Android and Ios Platforms in React-Native" />
+          <small style={{ fontSize: 15 }}>
+            With Lasa Client and its integrations with client libraries such as
+            React Native, you can compose your native views exposed by this
+            libraries with data from your restful Api. Its easy and works in the
+            same pattern as the web. Same API for every purpose
+          </small>
+          <MarkdownBlock>
+            {`\`\`\` javascript    
+              renderLoadingIndicator = () => (
+                <ActivityIndicator
+                  animating={true}
+                  size={30}
+                  color="#263238"
+                />
+              ) 
 
-const Features = props => (
-  <Block layout="fourColumn">
-    {[
-      {
-        content: 'This is the content of my feature',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'top',
-        title: 'Feature One',
-      },
-      {
-        content: 'The content of my second feature',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'top',
-        title: 'Feature Two',
-      },
-    ]}
-  </Block>
-);
-
-const FeatureCallout = props => (
-  <div
-    className="productShowcaseSection paddingBottom"
-    style={{textAlign: 'center'}}>
-    <h2>Feature Callout</h2>
-    <MarkdownBlock>These are features of this project</MarkdownBlock>
-  </div>
-);
-
-const LearnHow = props => (
-  <Block background="light">
-    {[
-      {
-        content: 'Talk about learning how to use this',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Learn How',
-      },
-    ]}
-  </Block>
-);
-
-const TryOut = props => (
-  <Block id="try">
-    {[
-      {
-        content: 'Talk about trying this out',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'left',
-        title: 'Try it Out',
-      },
-    ]}
-  </Block>
-);
-
-const Description = props => (
-  <Block background="dark">
-    {[
-      {
-        content: 'This is another description of how this project is useful',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Description',
-      },
-    ]}
-  </Block>
-);
-
-const Showcase = props => {
-  if ((siteConfig.users || []).length === 0) {
-    return null;
-  }
-  const showcase = siteConfig.users
-    .filter(user => {
-      return user.pinned;
-    })
-    .map((user, i) => {
-      return (
-        <a href={user.infoLink} key={i}>
-          <img src={user.image} title={user.caption} />
-        </a>
-      );
-    });
-
-  return (
-    <div className="productShowcaseSection paddingBottom">
-      <h2>{"Who's Using This?"}</h2>
-      <p>This project is used by all these people</p>
-      <div className="logos">{showcase}</div>
-      <div className="more-users">
-        <a className="button" href={pageUrl('users.html', props.language)}>
-          More {siteConfig.title} Users
-        </a>
+              render(){
+                return (
+                  <Query
+                    operation="getRecords"
+                    renderLoading={this.renderLoadingIndicator()}
+                  >
+                    {(feeds, fetchMore, refetchQuery) => (
+                      <View>
+                        <Text>{feeds.data}</Text>
+                      </View>
+                    )}
+                  </Query>
+                )
+              }
+          `}
+          </MarkdownBlock>
+        </Container>
+        <br />
+        <Container>
+          <FeatureTitle title="Manage Request Prefetch before Route Push" />
+          <small style={{ fontSize: 15 }}>
+            You can manage the prefetch of request before route push to the next
+            visible route to your users. In essence, Lasa client helps you store
+            the response of a requested route thereby reducing the need to send
+            queries when a user gets to a visible route.
+          </small>
+          <MarkdownBlock>
+            {`\`\`\` javascript    
+              <Router
+                name="content_router_link"
+                resources={[
+                  {
+                    operation: "getAdminPosts",
+                    fetchPolicy: "network-only"
+                  }, 
+                  {operation: "getUserLikes", fetchPolicy: "cache-first"}
+                ]}
+                loader={() => import("../Content")}
+                onRequestRoute={() =>
+                  this.props.history.push("/content/1?draft=false")
+                }
+              >
+                {(routeState, fetchProgress, push) => {
+                  let _props = {routeState, fetchProgress, push};
+                  return (
+                    <HomeScreen {..._props}/>
+                  );
+                }}
+              </Router>
+          `}
+          </MarkdownBlock>
+        </Container>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 class Index extends React.Component {
   render() {
-    let language = this.props.language || '';
+    let language = this.props.language || "";
 
     return (
       <div>
         <HomeSplash language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
-          <LearnHow />
-          <TryOut />
-          <Description />
-          <Showcase language={language} />
+          <HomeCallToAction />
         </div>
       </div>
     );
