@@ -36,9 +36,7 @@ const HomeCallToAction = props => {
         <div className="promoRow">
           <div className="pluginRowBlock">
             <Button href="#try">GET STARTED</Button>
-            <Button href={docUrl("doc1.html", language)}>
-              SAY HELLO
-            </Button>
+            <Button href={docUrl("doc1.html", language)}>SAY HELLO</Button>
           </div>
         </div>
       </div>
@@ -47,10 +45,6 @@ const HomeCallToAction = props => {
 };
 
 class Button extends React.Component {
-  static defaultProps = {
-    target: "_self"
-  };
-
   render() {
     return (
       <div className="pluginWrapper buttonWrapper">
@@ -61,6 +55,10 @@ class Button extends React.Component {
     );
   }
 }
+
+Button.defaultProps = {
+  target: "_self"
+};
 
 class HomeSplash extends React.Component {
   render() {
@@ -105,14 +103,10 @@ class Features extends React.PureComponent {
             these codes with declarative codes without complicating data flow.
           </small>
           <MarkdownBlock>
-            {`\`\`\` javascript 
+            {`\`\`\` javascript
               <Query
                 operation="getPostCount"
-                options={{
-                  fetchPolicy: "network-only",
-                  config: { params: { category: "education" } }
-                }}
-              >
+                options={{fetchPolicy: "network-only",config: { params: { category: "education" } }}}>
                 {(postCount, fetchMore, refetchQuery) => <Counter items={postCount.data} />}
               </Query>
           `}
@@ -128,14 +122,14 @@ class Features extends React.PureComponent {
             same pattern as the web. Same API for every purpose
           </small>
           <MarkdownBlock>
-            {`\`\`\` javascript    
+            {`\`\`\` javascript
               renderLoadingIndicator = () => (
                 <ActivityIndicator
                   animating={true}
                   size={30}
                   color="#263238"
                 />
-              ) 
+              )
 
               render(){
                 return (
@@ -164,21 +158,12 @@ class Features extends React.PureComponent {
             queries when a user gets to a visible route.
           </small>
           <MarkdownBlock>
-            {`\`\`\` javascript    
+            {`\`\`\` javascript
               <Router
                 name="content_router_link"
-                resources={[
-                  {
-                    operation: "getAdminPosts",
-                    fetchPolicy: "network-only"
-                  }, 
-                  {operation: "getUserLikes", fetchPolicy: "cache-first"}
-                ]}
+                resources={[{operation: "getAdminPosts",fetchPolicy: "network-only"},{operation: "getUserLikes", fetchPolicy: "cache-first"}]}
                 loader={() => import("../Content")}
-                onRequestRoute={() =>
-                  this.props.history.push("/content/1?draft=false")
-                }
-              >
+                onRequestRoute={() => this.props.history.push("/content/1?draft=false")}>
                 {(routeState, fetchProgress, push) => {
                   let _props = {routeState, fetchProgress, push};
                   return (
