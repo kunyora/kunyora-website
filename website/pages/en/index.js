@@ -37,7 +37,7 @@ const HomeCallToAction = props => {
           <div className="pluginRowBlock">
             <Button href="#try">GET STARTED</Button>
             <Button href={docUrl("doc1.html", language)}>
-              LEARN THE BASICS
+              SAY HELLO
             </Button>
           </div>
         </div>
@@ -80,7 +80,7 @@ class HomeSplash extends React.Component {
                   <div className="pluginRowBlock">
                     <Button href="#try">GET STARTED</Button>
                     <Button href={docUrl("doc1.html", language)}>
-                      LEARN THE BASICS
+                      SAY HELLO
                     </Button>
                   </div>
                 </div>
