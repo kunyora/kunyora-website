@@ -22,12 +22,12 @@ const siteConfig = {
   baseUrl: "/lasa-client/" /* base url for your project */,
   projectName: "LasaClient",
   headerLinks: [
-    { doc: "doc1", label: "Docs" },
-    { doc: "doc4", label: "Community" },
+    { doc: "getting_started", label: "Docs" },
+    { doc: "getting_started", label: "Community" },
     { blog: true, label: "Blog" },
     { page: "help", label: "Help" },
-    { doc: "doc4", label: "Github" },
-    { doc: "doc4", label: "React" }
+    { doc: "getting_started", label: "Github" },
+    { doc: "getting_started", label: "React" }
   ],
   users,
   /* path to images for header/footer */
@@ -56,7 +56,7 @@ const siteConfig = {
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: "default"
+    theme: "solarized-dark"
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
