@@ -1,5 +1,18 @@
 {
   "docs": {
-    "THE BASICS": ["getting_started", "quick_tutorial", "motivation", "vision"]
+    "The Basics": ["getting_started", "quick_tutorial", "motivation", "vision"],
+    "Guides (Lasa Client)": ["lasaclient_tutorial", "lasaclient_api_reference"],
+    "Guides (react-lasa)": [
+      "lasa_provider_component",
+      "lasa_provider_api_reference",
+      "query_component",
+      "query_component_api_overview",
+      "mutation_component",
+      "mutation_component_api_overview",
+      "router_component",
+      "router_component_api_overview",
+      "connector_component",
+      "connector_component_api_overview"
+    ]
   }
 }
