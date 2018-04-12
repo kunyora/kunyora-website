@@ -3,7 +3,7 @@ id: query_component_api_overview
 title: Query Api Overview
 ---
 
-The `Query`component is a simple reactJs `render props` element, which you can use in making typical `get query requests` to your restful api. This section of the documentation is divided into 2 sections, the `Props` used by the component and the `Parameters passed to this.props.children` of the component.
+The `Query` component is a simple reactJs `render props` element, which you can use in making typical `get query requests` to your restful api. This section of the documentation is divided into 2 sections, the `Props` used by the component and the `Parameters passed to this.props.children` of the component.
 
 This component uses an `heuristic` approach to mapping queries made to the store. A query is mapped using its configuration.Please refer to the [router docs](router_component_api_overview.md) for more information on this.
 
@@ -45,17 +45,17 @@ specifies the accessor that should be used to query your api. Accessors are form
 
 specifies a component which should be used to indicate that a query is in flight
 
-| Type | Required |
-| ---- | -------- |
-| func | No       |
+| Type      | Required |
+| --------- | -------- |
+| component | No       |
 
 ### `renderError`
 
 specifies a component which should be used to indicate that a query has failed
 
-| Type | Required |
-| ---- | -------- |
-| func | No       |
+| Type      | Required |
+| --------- | -------- |
+| component | No       |
 
 ### `options`
 

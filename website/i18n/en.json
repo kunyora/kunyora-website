@@ -4,9 +4,12 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "A flexible Rest Client for Javascript web and native applications",
+    "community_tutorials": "Community Tutorials",
     "connector_component_api_overview": "Connector Api Overview",
     "connector_component": "Connector Component",
+    "expectations_from_maintainers": "Expectations from Maintainers",
     "getting_started": "Getting Started",
+    "how_to_contribute": "How to Contribute",
     "lasa_provider_api_reference": "LasaProvider API Overview",
     "lasa_provider_component": "LasaProvider Component",
     "lasaclient_api_reference": "API Reference (LasaClient)",
@@ -20,6 +23,7 @@
     "quick_tutorial": "Quick Tutorial",
     "router_component_api_overview": "Router Api Overview",
     "router_component": "Router Component",
+    "todos": "Todos",
     "vision": "Vision",
     "Docs": "Docs",
     "Community": "Community",
@@ -28,8 +32,10 @@
     "Github": "Github",
     "React": "React",
     "The Basics": "The Basics",
-    "Guides (Lasa Client)": "Guides (Lasa Client)",
-    "Guides (react-lasa)": "Guides (react-lasa)"
+    "Lasa Client": "Lasa Client",
+    "react-lasa": "react-lasa",
+    "Contributing": "Contributing",
+    "What's Next": "What's Next"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

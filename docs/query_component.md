@@ -47,7 +47,7 @@ render(App, document.getElementById("app"));
 ```
 
 The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-lasa` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
-Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to create our whole application to a top level [LasaProvider](lasa_provider_component.md) component while passing in the `client` instance and the `store` as props.
+Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to connect our whole application to a top level [LasaProvider](lasa_provider_component.md) component while passing in the `client` instance and the `store` as props.
 
 ### **Connecting to our data using the Query component**
 
@@ -84,7 +84,7 @@ export default (NotificationList = props => (
 
 Notice that the above code uses `react fragment api` to render 2 children components in the `Query` component. The code above queries for a list of notification which it displays in a list and then renders a button that can be used to refetch the query. Lets go ahead to explain the props used in this example.
 
-* **operation** : This props is used to specify the command to run. Typically in a `get` request, it is formed by camel-casing `get` with the `name` or `path` attribute supplied by the user when creating the `client` and in our case, this is `notification`. For all full understanding of how `accessors` are formed, please refer to the [Indepth tutorial](query_component.md) section of the application for a more detailed explanation of this.
+* **operation** : This props is used to specify the command to run. Typically in a `get` request, it is formed by camel-casing `get` with the `name` or `path` attribute supplied by the user when creating the `client` and in our case, this is `notification`. For a full understanding of how `accessors` are formed, please refer to the [Indepth tutorial](query_component.md) section of the application for a more detailed explanation of this.
 
 * **renderError** : This props is used to render a view in case an error occurred while fetching the query. In our case, we render a text which notifies a user that an error just occured.
 

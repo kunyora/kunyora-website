@@ -1,8 +1,8 @@
 {
   "docs": {
     "The Basics": ["getting_started", "quick_tutorial", "motivation", "vision"],
-    "Guides (Lasa Client)": ["lasaclient_tutorial", "lasaclient_api_reference"],
-    "Guides (react-lasa)": [
+    "Lasa Client": ["lasaclient_tutorial", "lasaclient_api_reference"],
+    "react-lasa": [
       "lasa_provider_component",
       "lasa_provider_api_reference",
       "query_component",
@@ -13,6 +13,8 @@
       "router_component_api_overview",
       "connector_component",
       "connector_component_api_overview"
-    ]
+    ],
+    "Contributing": ["how_to_contribute", "expectations_from_maintainers"],
+    "What's Next": ["community_tutorials", "todos"]
   }
 }
