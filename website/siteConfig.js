@@ -23,17 +23,17 @@ const siteConfig = {
   projectName: "Kunyora",
   headerLinks: [
     { doc: "getting_started", label: "Docs" },
-    { doc: "getting_started", label: "Community" },
+    { page: "community", label: "Community" },
     { blog: true, label: "Blog" },
     { page: "help", label: "Help" },
     { doc: "getting_started", label: "Github" },
-    { doc: "getting_started", label: "React" }
+    { doc: "query_component", label: "React" }
   ],
   users,
   /* path to images for header/footer */
-  // headerIcon: "img/docusaurus.svg",
+  headerIcon: "img/headerIcon.png",
   // footerIcon: "img/docusaurus.svg",
-  favicon: "img/favicon.png",
+  favicon: "img/tabIcon.png",
   /* colors for website */
   colors: {
     primaryColor: "#0d47a1",

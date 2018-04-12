@@ -35,8 +35,12 @@ const HomeCallToAction = props => {
       <div className="section promoSection">
         <div className="promoRow">
           <div className="pluginRowBlock">
-            <Button href="#try">GET STARTED</Button>
-            <Button href={docUrl("doc1.html", language)}>SAY HELLO</Button>
+            <Button href={docUrl("getting_started.html", language)}>
+              GET STARTED
+            </Button>
+            <Button href={docUrl("quick_tutorial.html", language)}>
+              SAY HELLO
+            </Button>
           </div>
         </div>
       </div>
@@ -67,7 +71,9 @@ class HomeSplash extends React.Component {
       <div className="homeContainer">
         <div className="homeSplashFade">
           <div className="wrapper homeWrapper">
-            <div className="projectLogo">{/* <img src="" /> */}</div>
+            <div className="projectLogo">
+              <img src={imgUrl("headerIcon.png")} />
+            </div>
             <div className="inner">
               <h2 className="projectTitle">
                 {siteConfig.title}
@@ -76,8 +82,10 @@ class HomeSplash extends React.Component {
               <div className="section promoSection">
                 <div className="promoRow">
                   <div className="pluginRowBlock">
-                    <Button href="#try">GET STARTED</Button>
-                    <Button href={docUrl("doc1.html", language)}>
+                    <Button href={docUrl("getting_started.html", language)}>
+                      GET STARTED
+                    </Button>
+                    <Button href={docUrl("quick_tutorial.html", language)}>
                       SAY HELLO
                     </Button>
                   </div>
