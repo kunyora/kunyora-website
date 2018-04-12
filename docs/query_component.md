@@ -3,7 +3,7 @@ id: query_component
 title: Query Component
 ---
 
-A Query component is a lower level component which you would typically use in making **only** `get reqeusts`, hence the component name `Query`. Queries are typically operations performed on a database which do not mutate(to cause a change) the database. The Query component is a component exported from `react-lasa` which you could use to connect your UI to datas sent by your api. It is also a totally declarative API which allows you to perform queries while handling states like loading and error in a totally declarative manner.
+A Query component is a lower level component which you would typically use in making **only** `get reqeusts`, hence the component name `Query`. Queries are typically operations performed on a database which do not mutate(to cause a change) the database. The Query component is a component exported from `react-kunyora` which you could use to connect your UI to datas sent by your api. It is also a totally declarative API which allows you to perform queries while handling states like loading and error in a totally declarative manner.
 
 In this section of the documentation, we would be creating a very `simple notification list application`, so sit tight and get your hands ready to practice some query codes.
 
@@ -17,7 +17,7 @@ In this section of the Query tutorial, we would be creating a simple notificatio
 
 ### **Creating the client**
 
-Let's go ahead to create the client of our application. We would assume that you are familiar with creating the a client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](lasaclient_tutorial.md) and the [Lasaclient Api Reference Configuration section](lasaclient_api_reference.md#client-configration).
+Let's go ahead to create the client of our application. We would assume that you are familiar with creating the a client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](kunyora_tutorial.md) and the [Kunyora Api Reference Configuration section](kunyora_api_reference.md#client-configration).
 
 ```javascript
 /**
@@ -25,29 +25,29 @@ Let's go ahead to create the client of our application. We would assume that you
  */
 import React from "react";
 import { render } from "react-dom";
-import LasaClient from "lasa-client";
-import { LasaProvider } from "react-lasa";
+import KunyoraClient from "kunyora";
+import { KunyoraProvider } from "react-kunyora";
 
 import NotificationList from "./NotificationList";
 
-const client = LasaClient({
-  baseURL: "https://test-lasa.herokuapp.com",
+const client = KunyoraClient({
+  baseURL: "https://test-kunyora.herokuapp.com",
   nouns: [{ path: "/notification", name: "notification" }]
 });
 
 const App = () => (
-  <LasaProvider client={client} store={client.store}>
+  <KunyoraProvider client={client} store={client.store}>
     <div>
       <NotificationList />
     </div>
-  </LasaProvider>
+  </KunyoraProvider>
 );
 
 render(App, document.getElementById("app"));
 ```
 
-The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-lasa` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
-Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to connect our whole application to a top level [LasaProvider](lasa_provider_component.md) component while passing in the `client` instance and the `store` as props.
+The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
+Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to connect our whole application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
 
 ### **Connecting to our data using the Query component**
 
@@ -59,7 +59,7 @@ Lets connect our UI to the data from the store using a query component. We would
  */
 
 import React from "react";
-import { Query } from "react-lasa";
+import { Query } from "react-kunyora";
 
 export default (NotificationList = props => (
   <Query

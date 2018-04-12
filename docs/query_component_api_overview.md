@@ -35,7 +35,7 @@ determines if a query should be skipped or not.
 
 ### `operation`
 
-specifies the accessor that should be used to query your api. Accessors are formed from camel-casing `get` and the `name` supplied in the `nouns` of a query. Please refer to the [Indepth tutorial](lasaclient_tutorial.md) section of the docs to see how accessors are generally formed.
+specifies the accessor that should be used to query your api. Accessors are formed from camel-casing `get` and the `name` supplied in the `nouns` of a query. Please refer to the [Indepth tutorial](kunyora_tutorial.md) section of the docs to see how accessors are generally formed.
 
 | Type   | Required |
 | ------ | -------- |

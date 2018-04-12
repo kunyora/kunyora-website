@@ -98,8 +98,8 @@ class Features extends React.PureComponent {
         <Container id={this.props.id} background={this.props.background}>
           <FeatureTitle title="Build UI component and sync with data" />
           <small style={{ fontSize: 15 }}>
-            Lasa Client makes it easy to sync your UI's with your restful store
-            by removing the complexity in writing imperative codes and replacing
+            Kunyora makes it easy to sync your UI's with your restful store by
+            removing the complexity in writing imperative codes and replacing
             these codes with declarative codes without complicating data flow.
           </small>
           <MarkdownBlock>
@@ -116,7 +116,7 @@ class Features extends React.PureComponent {
         <Container>
           <FeatureTitle title="Build for both native Android and Ios Platforms in React-Native" />
           <small style={{ fontSize: 15 }}>
-            With Lasa Client and its integrations with client libraries such as
+            With Kunyora and its integrations with client libraries such as
             React Native, you can compose your native views exposed by this
             libraries with data from your restful Api. Its easy and works in the
             same pattern as the web. Same API for every purpose
@@ -153,8 +153,8 @@ class Features extends React.PureComponent {
           <FeatureTitle title="Manage Request Prefetch before Route Push" />
           <small style={{ fontSize: 15 }}>
             You can manage the prefetch of request before route push to the next
-            visible route to your users. In essence, Lasa client helps you store
-            the response of a requested route thereby reducing the need to send
+            visible route to your users. In essence, Kunyora helps you store the
+            response of a requested route thereby reducing the need to send
             queries when a user gets to a visible route.
           </small>
           <MarkdownBlock>

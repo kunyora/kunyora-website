@@ -1,27 +1,27 @@
 ---
-id: lasaclient_api_reference
-title: API Reference (LasaClient)
+id: kunyora_api_reference
+title: API Reference (Kunyora)
 sidebar_label: API Reference
 ---
 
-This section of the documentation covers the the Api reference of `LasaClient`. It is divided into 3 sections, the `configuration` passed to the client, `exposed methods` by the client and the `configuration` passed to the methods which interact with the api.
+This section of the documentation covers the the Api reference of `Kunyora`. It is divided into 3 sections, the `configuration` passed to the client, `exposed methods` by the client and the `configuration` passed to the methods which interact with the api.
 
 ## Client Configration(Options)
 
-* [`baseURL`](lasaclient_api_reference.md#baseurl)
-* [`nouns`](lasaclient_api_reference.md#nouns)
-* [`thenables`](lasaclient_api_reference.md#thenables)
-* [`catchables`](lasaclient_api_reference.md#catchables)
+* [`baseURL`](kunyora_api_reference.md#baseurl)
+* [`nouns`](kunyora_api_reference.md#nouns)
+* [`thenables`](kunyora_api_reference.md#thenables)
+* [`catchables`](kunyora_api_reference.md#catchables)
 
 ## Methods
 
-* [`Request or Accessor methods`](lasaclient_api_reference.md#request-or-accessor-methods)
-* [`middleware`](lasaclient_api_reference.md#middleware)
-* [`store`](lasaclient_api_reference.md#store)
+* [`Request or Accessor methods`](kunyora_api_reference.md#request-or-accessor-methods)
+* [`middleware`](kunyora_api_reference.md#middleware)
+* [`store`](kunyora_api_reference.md#store)
 
 # Request Methods Configration
 
-* [`Axios instance config`](lasaclient_api_reference.md#axios-instance-config)
+* [`Axios instance config`](kunyora_api_reference.md#axios-instance-config)
 
 # Reference
 
@@ -30,7 +30,7 @@ This section of the documentation covers the the Api reference of `LasaClient`. 
 ### `baseURL`
 
 ```javascript
-let client = LasaClient({ baseURL: "ENTER_THE_URL_OF_YOUR_ENDPOINT" });
+let client = KunyoraClient({ baseURL: "ENTER_THE_URL_OF_YOUR_ENDPOINT" });
 ```
 
 This should contain your restful endpoint url
@@ -42,9 +42,9 @@ This should contain your restful endpoint url
 ### `nouns`
 
 ```javascript
-let client = LasaClient({ nouns: ["ENTER_YOUR_PATH"] });
+let client = kunyoraClient({ nouns: ["ENTER_YOUR_PATH"] });
 
-let client = LasaClient({
+let client = kunyoraClient({
   nouns: [{ path: "ENTER_YOUR_PATH", name: "ENTER_AN_OPTIONAL_NAME" }]
 });
 ```
@@ -64,7 +64,7 @@ specifies an array of routes or paths exposed by the restful api
 ### `thenables`
 
 ```javascript
-let client = LasaClient({
+let client = kunyoraClient({
   thenables: {
     ...accessor_methods,
     get: function(response, name) {
@@ -77,7 +77,7 @@ let client = LasaClient({
 });
 ```
 
-specifies an object that you should use to handle success responses from your api. This uses a key-based mapping with the accessors to handle the success response. If this property is not passed, then LasaClient defaults to attaching a promise to the accessor method itself
+specifies an object that you should use to handle success responses from your api. This uses a key-based mapping with the accessors to handle the success response. If this property is not passed, then kunyora defaults to attaching a promise to the accessor method itself
 
 | Type   | Required |
 | ------ | -------- |
@@ -91,7 +91,7 @@ specifies an object that you should use to handle success responses from your ap
 | create           | function | No       | can be used as a key to handle all posts requests which do not have their accessor specified in the thenables                                                                                                                                                                  |
 | update           | function | No       | can be used as a key to handle all Put requests which do not have their accessor specified in the thenables                                                                                                                                                                    |
 | delete           | function | No       | can be used as a key to handle all delete requests which do not have their accessor specified in the thenables                                                                                                                                                                 |
-| `your_accessors` | function | No       | this is the accessor that `LasaClient` checks to handle any incoming success response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
+| `your_accessors` | function | No       | this is the accessor that `kunyoraClient` checks to handle any incoming success response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
 
 **parameters passed to Accessor.methods supplied as keys to thenables**
 
@@ -102,7 +102,7 @@ specifies an object that you should use to handle success responses from your ap
 ### `catchables`
 
 ```javascript
-let client = LasaClient({
+let client = kunyoraClient({
   catchables: {
     ...accessor_methods,
     get: function(error, name) {
@@ -115,7 +115,7 @@ let client = LasaClient({
 });
 ```
 
-specifies an object that you should use to handle error responses from your api. This uses a key-based mapping with the accessors to handle the error response. If this property is not passed, then LasaClient defaults to attaching a promise to the accessor method itself
+specifies an object that you should use to handle error responses from your api. This uses a key-based mapping with the accessors to handle the error response. If this property is not passed, then kunyora defaults to attaching a promise to the accessor method itself
 
 | Type   | Required |
 | ------ | -------- |
@@ -129,7 +129,7 @@ specifies an object that you should use to handle error responses from your api.
 | create           | function | No       | can be used as a key to handle all posts requests which do not have their accessor specified in the thenables                                                                                                                                                                |
 | update           | function | No       | can be used as a key to handle all Put requests which do not have their accessor specified in the thenables                                                                                                                                                                  |
 | delete           | function | No       | can be used as a key to handle all delete requests which do not have their accessor specified in the thenables                                                                                                                                                               |
-| `your_accessors` | function | No       | this is the accessor that `LasaClient` checks to handle any incoming error response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
+| `your_accessors` | function | No       | this is the accessor that `kunyoraClient` checks to handle any incoming error response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
 
 **parameters passed to Accessor.methods supplied as keys to catchables**
 
@@ -145,7 +145,7 @@ specifies an object that you should use to handle error responses from your api.
 client["YOUR_ACCESSOR_METHODS"]({ ...axios_instance_config });
 ```
 
-used to communicate with your restful backend. The accessor method is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Please check out the [InDepth Tutorial](lasaclient_tutorial.md) section of the documentation for a practical example of how this is done.
+used to communicate with your restful backend. The accessor method is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Please check out the [InDepth Tutorial](kunyora_tutorial.md) section of the documentation for a practical example of how this is done.
 
 The `axios instance config` is similar to that provided by the axios documentation.
 
@@ -187,7 +187,7 @@ For now, we have not found any usage for this module yet. However, it is current
 ### `Axios instance config`
 
 ```javascript
-let client = LasaClient({ ...config });
+let client = kunyoraClient({ ...config });
 
 client["YOUR_ACCESSOR"]({ params: {}, data: {}, ...otherAxiosConfigs });
 ```

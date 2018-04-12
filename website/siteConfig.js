@@ -16,11 +16,11 @@ const users = [
 ];
 
 const siteConfig = {
-  title: "Lasa Client" /* title for your website */,
+  title: "Kunyora" /* title for your website */,
   tagline: "A flexible Rest Client for Javascript web and native applications",
-  url: "https://lasa.github.io" /* your website url */,
-  baseUrl: "/lasa-client/" /* base url for your project */,
-  projectName: "LasaClient",
+  url: "https://kunyora.github.io" /* your website url */,
+  baseUrl: "/kunyora/" /* base url for your project */,
+  projectName: "Kunyora",
   headerLinks: [
     { doc: "getting_started", label: "Docs" },
     { doc: "getting_started", label: "Community" },
@@ -60,7 +60,7 @@ const siteConfig = {
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/lasa/lasa-client"
+  repoUrl: "https://github.com/kunyora/kunyora"
   /* On page navigation for the current documentation page */
   // onPageNav: 'separate',
 };

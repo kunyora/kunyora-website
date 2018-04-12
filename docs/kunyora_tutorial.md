@@ -1,15 +1,15 @@
 ---
-id: lasaclient_tutorial
+id: kunyora_tutorial
 title: InDepth Tutorial
 ---
 
-In this section, we will examine a very comprehensive tutorial on using `LasaClient` for a simple Javascript application. we would cover the usage of the methods exposed by the library with detailed explanations of each of its methods. The `LasaClient` library was built on the popular `axios` library which is its underlaying library for carrying out request. We also assume that you have installed the library using npm or yarn. If you have not done so, please refer to the [installation]("getting_started.html") guide to see how this is done. This tutorial would examine the basic usage of `LasaClient` without any view library integration, so grab your laptop, seat tight and set your fingers ready to code. Yah!!!
+In this section, we will examine a very comprehensive tutorial on using `kunyora` for a simple Javascript application. we would cover the usage of the methods exposed by the library with detailed explanations of each of its methods. The `Kunyora` library was built on the popular `axios` library which is its underlaying library for carrying out request. We also assume that you have installed the library using npm or yarn. If you have not done so, please refer to the [installation](getting_started.md) guide to see how this is done. This tutorial would examine the basic usage of `kunyora` without any view library integration, so grab your laptop, seat tight and set your fingers ready to code. Yah!!!
 
-* [`Building a Simple Calculator`](lasaclient_tutorial.md#building-a-simple-calculator)
-* [`Creating the restful backend with NodeJs`](lasaclient_tutorial.md#creating-the-restful-backend-with-nodejs)
-* [`Creating the basic html template for our application`](lasaclient_tutorial.md#creating-the-basic-html-template-for-our-application)
-* [`Creating the Lasa client code for our application`](lasaclient_tutorial.md#creating-the-lasa-client-code-for-our-application)
-* [`Creating a basic middleware`](lasaclient_tutorial.md#creating-a-basic-middleware)
+* [`Building a Simple Calculator`](kunyora_tutorial.md#building-a-simple-calculator)
+* [`Creating the restful backend with NodeJs`](kunyora_tutorial.md#creating-the-restful-backend-with-nodejs)
+* [`Creating the basic html template for our application`](kunyora_tutorial.md#creating-the-basic-html-template-for-our-application)
+* [`Creating the Kunyora client code for our application`](kunyora_tutorial.md#creating-the-kunyora-client-code-for-our-application)
+* [`Creating a basic middleware`](kunyora_tutorial.md#creating-a-basic-middleware)
 
 ## Building a Simple Calculator
 
@@ -20,11 +20,11 @@ This would be codes in a pure Javascript environment, no `ReactJs, VueJs or even
 * The calculator would need to save the name of the current user using a `post` request.
 * The calculator would need to add 2 numbers together by sending a `get` request with the 2 numbers as `database queries`
 
-Simple Right!!! , Yah!!!. Now lets dive in and see how we can accomplish this with `lasa-client`
+Simple Right!!! , Yah!!!. Now lets dive in and see how we can accomplish this with `kunyora`
 
 ### **Creating the restful backend with NodeJs**
 
-This part is now hosted on heroku. Just copy this url `https://www.test-lasa.herokuapp.com`, So you might want to skip. However, if you are interested in checking out the implementation of your app on the server then read along.
+This part is now hosted on heroku. Just copy this url `https://www.test-kunyora.herokuapp.com`, So you might want to skip. However, if you are interested in checking out the implementation of your app on the server then read along.
 
 Let's create a simple restful backend in `nodeJs`. Note that this can be done in any server-side language of your choice as the same principles applies. We would be setting up an express server and setting up `CORS` with it in case you are on a different domain.
 
@@ -99,7 +99,7 @@ Since every application needs a UI for users to interact with, lets go ahead to 
 
 The code above is a simple html sample of a calculator with 3 input fields. The first field would be used in collecting the user's name and saving it in our DB so he/she can be authenticated. The other 2 fields would be used in accepting numbers which would be used for numerical calculation. We include a script pointing to the location of our client side Javascript code at the bottom of the html page
 
-### **Creating the Lasa client code for our application**
+### **Creating the kunyora client code for our application**
 
 Finally, we get to integrate our html with our client side Javascript. Let's dive in.
 
@@ -117,8 +117,8 @@ var calculatorBtn = document.getElementById("calculateBtn"),
   result = document.getElementById("result"),
   num2 = document.getElementById("num2"),
   verifyUser = document.getElementById("verifyUser"),
-  client = LasaClient({
-    baseURL: "https://https://www.test-lasa.herokuapp.com",
+  client = KunyoraClient({
+    baseURL: "https://https://www.test-kunyora.herokuapp.com",
     nouns: [
       { path: "/user", name: "user" },
       { path: "/compute", name: "compute" }
@@ -154,9 +154,9 @@ calculatorBtn.onclick = function() {
 
 Okay, Whew!!! we are done typing. Try running your application in a browser to see how it works. Let's do some explaning of the codes.
 
-The code above simply creates a LasaClient instance which your client-side Javascript code can call to perform the computation. So let's do some explaining of the config options.
+The code above simply creates a KunyoraClient instance which your client-side Javascript code can call to perform the computation. So let's do some explaining of the config options.
 
-* **baseURL**: This url points to the api end point on the server. In our case, this is points to `https://https://www.test-lasa.herokuapp.com`
+* **baseURL**: This url points to the api end point on the server. In our case, this is points to `https://https://www.test-kunyora.herokuapp.com`
 
 * **nouns**: This is an array of type `Object or string`. `Object` types should contain a `path` property which specifies the route which the library should make a request to and an optional `name` property which would be used when quering the API. If an array containing strings is supplied to the `nouns` property of the client, then this should be the `path` that the library should make the request to.
 
@@ -183,18 +183,18 @@ Basically, the library exposes some names to these nouns, `create, get, update a
 
 In our sample code above, we expose `/user` and `/compute` as `paths` having `name` `user` and `compute` respectively.
 
-* **thenables**: This is a `success` object containing the name used by `LasaClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers. It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method basically helps in mapping successful database response to their respective handlers. In the example code above, we handle `createUser` and `getCompute` api success response. The response object is passed as a parameter to their respective functions. Please refer to the thenables section of the [Api reference]("lasaclient_api_reference.html") for more details on this property and the argument its functions are bounded to.
+* **thenables**: This is a `success` object containing the name used by `KunyoraClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers. It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method basically helps in mapping successful database response to their respective handlers. In the example code above, we handle `createUser` and `getCompute` api success response. The response object is passed as a parameter to their respective functions. Please refer to the thenables section of the [Api reference](kunyora_api_reference.md) for more details on this property and the argument its functions are bounded to.
 
-* **catchables**: This is an `error` object containing the name used by `LasaClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers.It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method handles errors from the api through the mapped keys. The error Object is passed as a parameter to their respective functions. Please refer to the catchables section of the [Api reference]("lasaclient_api_reference.html") for more details on this property and the argument its functions are bounded to.
+* **catchables**: This is an `error` object containing the name used by `KunyoraClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers.It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method handles errors from the api through the mapped keys. The error Object is passed as a parameter to their respective functions. Please refer to the catchables section of the [Api reference](kunyora_api_reference.md) for more details on this property and the argument its functions are bounded to.
 
-The client instance exposes various methods that can then be used to interact with the Api. This methods are formed from the same approach that was explained above in the [nouns section]("lasaclient_tutorial.html"). In our case, the client exposes `createUser` and `getCompute` as methods. This methods could also take a config which is typically similar to that supplied to the `axios` instance during initialization. Please refer to the [axios]("axios.com") or the [Api reference]("lasaclient_api_reference.html") for a full insight into the config object.
+The client instance exposes various methods that can then be used to interact with the Api. This methods are formed from the same approach that was explained above in the [nouns section](kunyora_tutorial.md). In our case, the client exposes `createUser` and `getCompute` as methods. This methods could also take a config which is typically similar to that supplied to the `axios` instance during initialization. Please refer to the [axios]("axios.com") or the [Api reference](kunyora_api_reference.md) for a full insight into the config object.
 
 ### **Creating a basic middleware**
 
-Let's assume you want to build an application that requires you to send the `jwt` or an `appId` as an header token. You would mostly want to send this on every request, so the user can be authenticated before a mutation is performed on the database. `LasaClient` allows you to carry this out using our custom `middleware` exposed by the client instance. Check out this example code.
+Let's assume you want to build an application that requires you to send the `jwt` or an `appId` as an header token. You would mostly want to send this on every request, so the user can be authenticated before a mutation is performed on the database. `kunyora` allows you to carry this out using our custom `middleware` exposed by the client instance. Check out this example code.
 
 ```javascript
-let client = LasaClient({ ...configs });
+let client = KunyoraClient({ ...configs });
 
 client.middleware({
   useBeforeRequest: function(header) {
@@ -212,6 +212,6 @@ client.middleware({
 });
 ```
 
-The above code seems self explanatory. Looking through, you would notice that we pass two distinct methods. The `useBeforeRequest` method is a callback that `LasaClient` calls internally before performing a request. You can set headers here, however make sure that you return the headers set in this case. The `useAfterResponse` method is a callback that `LasaClient` calls internally after a response object must have been gotten.
+The above code seems self explanatory. Looking through, you would notice that we pass two distinct methods. The `useBeforeRequest` method is a callback that `kunyora` calls internally before performing a request. You can set headers here, however make sure that you return the headers set in this case. The `useAfterResponse` method is a callback that `kunyora` calls internally after a response object must have been gotten.
 
-Please refer to the [Api reference]("lasaclient_api_reference.html") for a full overview of the methods and properties exposed by the `LasaClient` property
+Please refer to the [Api reference](kunyora_api_reference.md) for a full overview of the methods and properties exposed by the `KunyoraClient` property

@@ -1,10 +1,10 @@
 {
   "docs": {
     "The Basics": ["getting_started", "quick_tutorial", "motivation", "vision"],
-    "Lasa Client": ["lasaclient_tutorial", "lasaclient_api_reference"],
-    "react-lasa": [
-      "lasa_provider_component",
-      "lasa_provider_api_reference",
+    "Kunyora": ["kunyora_tutorial", "kunyora_api_reference"],
+    "react-kunyora": [
+      "kunyora_provider_component",
+      "kunyora_provider_api_reference",
       "query_component",
       "query_component_api_overview",
       "mutation_component",

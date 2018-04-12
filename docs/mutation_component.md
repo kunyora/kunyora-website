@@ -3,7 +3,7 @@ id: mutation_component
 title: Mutation Component
 ---
 
-A Mutation component is a low level component which you would typically use in making `post, update, put or delete` request which all cause side effects in our databases. This component is one which is exported from `react-lasa`. It uses the `render props` pattern of reactJs to provide your UI with functionalities which allow it to perform this mutations.
+A Mutation component is a low level component which you would typically use in making `post, update, put or delete` request which all cause side effects in our databases. This component is one which is exported from `react-kunyora`. It uses the `render props` pattern of reactJs to provide your UI with functionalities which allow it to perform this mutations.
 
 In this section, we would be creating a very `simple todo list application`
 
@@ -17,7 +17,7 @@ In this section of the documentation, we would be creating a todo list applicati
 
 ### **Creating the client**
 
-Here, we would be creating the client for our application. We would assume that you are familiar with creating the a client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](lasaclient_tutorial.md) and the [Lasaclient Api Reference Configuration section](lasaclient_api_reference.md#client-configration).
+Here, we would be creating the client for our application. We would assume that you are familiar with creating the a client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](kunyora_tutorial.md) and the [Kunyora Api Reference Configuration section](kunyora_api_reference.md#client-configration).
 
 ```javascript
 /**
@@ -25,29 +25,29 @@ Here, we would be creating the client for our application. We would assume that 
  */
 import React from "react";
 import { render } from "react-dom";
-import LasaClient from "lasa-client";
-import { LasaProvider } from "react-lasa";
+import KunyoraClient from "kunyora";
+import { KunyoraProvider } from "react-kunyora";
 
 import TodoList from "./TodoList";
 
-const client = LasaClient({
-  baseURL: "https://test-lasa.herokuapp.com",
+const client = KunyoraClient({
+  baseURL: "https://test-kunyora.herokuapp.com",
   nouns: [{ path: "/todo", name: "todo" }]
 });
 
 const App = () => (
-  <LasaProvider client={client} store={client.store}>
+  <KunyoraProvider client={client} store={client.store}>
     <div>
       <TodoList />
     </div>
-  </LasaProvider>
+  </KunyoraProvider>
 );
 
 render(App, document.getElementById("app"));
 ```
 
-The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-lasa` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
-Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/todo` routes. Then we go ahead to connect our whole application to a top level [LasaProvider](lasa_provider_component.md) component while passing in the `client` instance and the `store` as props.
+The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
+Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/todo` routes. Then we go ahead to connect our whole application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
 
 ### **Sending a Post Request to add a Note**
 
@@ -55,7 +55,7 @@ Lets go ahead to create the UI for our todo list application. The UI would basic
 
 ```javascript
 import React from "react";
-import { Query, Mutation } from "react-lasa";
+import { Query, Mutation } from "react-kunyora";
 
 class List extends React.PureComponent {
   state = {
@@ -107,7 +107,7 @@ export default (TodoList = props => (
 ));
 ```
 
-The code above creates a todo by sending a `post` request to the database which typically adds a new `todo` to our online store. It also informs the user of the `loading` progress of the todo to be added as well as generate a list of recently added `todos`. We make use of two component which we import from `react-lasa`. The `Query` component helps in fetching a list of recently added `todos`. You can refer to the [Query tutorial](query_component.md) for a short tutorial on using the `Query` component, thereafter check out the [Query Api docs](query_component_api_overview.md) for references on this component.
+The code above creates a todo by sending a `post` request to the database which typically adds a new `todo` to our online store. It also informs the user of the `loading` progress of the todo to be added as well as generate a list of recently added `todos`. We make use of two component which we import from `react-kunyora`. The `Query` component helps in fetching a list of recently added `todos`. You can refer to the [Query tutorial](query_component.md) for a short tutorial on using the `Query` component, thereafter check out the [Query Api docs](query_component_api_overview.md) for references on this component.
 
 The `Mutation` component is used in our exmaple above to create the `todo` since it sends a `post` request which creates the text entered by our user. Let's go ahead to explain the props we used in the `Mutation`component to achieve our purpose.
 

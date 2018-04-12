@@ -27,24 +27,24 @@ In this section, we would setting up the routes for our navigator based applicat
  */
 import React from "react";
 import { render } from "react-dom";
-import LasaClient from "lasa-client";
-import { LasaProvider } from "react-lasa";
+import KunyoraClient from "kunyora";
+import { KunyoraProvider } from "react-kunyora";
 
 import AppRoutes from "./AppRoutes";
 
-const client = LasaClient({
-  baseURL: "https://www.test-lasa.herokuapp.com",
+const client = KunyoraClient({
+  baseURL: "https://www.test-kunyora.herokuapp.com",
   nouns: [{ path: "/notification", name: "notification" }]
 });
 
 const App = props => (
-  <LasaProvider client={client} store={client.store}>
+  <KunyoraProvider client={client} store={client.store}>
     <AppRoutes />
-  </LasaProvider>
+  </KunyoraProvider>
 );
 ```
 
-In the code above, we set up the client of the application using the `LasaProvider` top level component and `LasaClient`, please refer to the [LasaProvider Docs](lasa_provider_component.md) to learn about this component and the [`LasaClient Docs`](lasaclient_tutorial.md) for more reference.
+In the code above, we set up the client of the application using the `KunyoraProvider` top level component and `KunyoraClient`, please refer to the [KunyoraProvider Docs](kunyora_provider_component.md) to learn about this component and the [`Kunyora Docs`](kunyora_tutorial.md) for more reference.
 
 ```javascript
 /**
@@ -78,7 +78,7 @@ Let's create the `Initiator` screen of our application. This screen would be use
  * Initiator.js
  */
 import React from "react";
-import { Router } from "react-lasa";
+import { Router } from "react-kunyora";
 
 export default (Initiator = props => (
   <Router
@@ -107,7 +107,7 @@ Here, we would create the `Notification` component which would be used in displa
  * Notification.js
  */
 import React from "react";
-import { Query } from "react-lasa";
+import { Query } from "react-kunyora";
 
 export default (Notification = props => (
   <Query operation="getNotification">
@@ -124,4 +124,4 @@ export default (Notification = props => (
 
 Ideally, we are suppose to code split at the route level within the `Notification` component using the `Connector` component. However, you can check up our series of tutorials for an example of how to achieve this purpose.
 
-Run your application and see the beauty in using the `react-lasa`. Please check out the [Router Api reference](router_component_api_overview.md) for an overview of ythe component.
+Run your application and see the beauty in using the `react-kunyora`. Please check out the [Router Api reference](router_component_api_overview.md) for an overview of ythe component.
