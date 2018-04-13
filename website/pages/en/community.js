@@ -17,9 +17,7 @@ class Community extends React.Component {
           </div>
           <h2> Stack Overflow </h2>
           <div>
-            You can use stack Overflow to ask questions. Read through the
-            <a>existing questions tag</a> in stack overflow or
-            <a>ask your own</a>.
+            You can use stack Overflow to ask questions pertaining to Kunyora
           </div>
           <h2> Twitter </h2>
           <div style={{ marginBottom: 20 }}>

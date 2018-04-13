@@ -15,6 +15,8 @@ const users = [
   }
 ];
 
+const repoUrl = "https://github.com/kunyora/kunyora";
+
 const siteConfig = {
   title: "Kunyora" /* title for your website */,
   tagline: "A flexible Rest Client for Javascript web and native applications",
@@ -25,9 +27,8 @@ const siteConfig = {
     { doc: "getting_started", label: "Docs" },
     { page: "community", label: "Community" },
     { blog: true, label: "Blog" },
-    { page: "help", label: "Help" },
-    { doc: "getting_started", label: "Github" },
-    { doc: "query_component", label: "React" }
+    { href: repoUrl, label: "Github" },
+    { doc: "query_component", label: "React-Kunyora" }
   ],
   users,
   /* path to images for header/footer */
@@ -60,7 +61,7 @@ const siteConfig = {
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/kunyora/kunyora"
+  repoUrl
   /* On page navigation for the current documentation page */
   // onPageNav: 'separate',
 };
