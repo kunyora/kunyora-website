@@ -119,6 +119,6 @@ Now, lets go ahead to explain the parameters passed to our `this.props.children`
 
 * **mutationState** : This parameter contains the state of our mutation request which could either be in-flight or resolved. The `loading` property is the only property contained in this object. Ideally, it allows us keep a reference to the current loading condition of our `request` while still managing everything declaratively. The `loading` state can only be `true` or `false` but cannot be both at the same time.
 
-* **mutate**: This parameter is a function that we need to call to actually carry out the mutation on the database. It accepts a single object is the `config` that should be sent with the request that we make. This `config` parameter it accepts is similar to that used by [axios](axios.com). In our example above, we use this function to create a `todo` in a function named `createTodo`.
+* **mutate**: This parameter is a function that we need to call to actually carry out the mutation on the database. It accepts a single object is the `config` that should be sent with the request that we make. This `config` parameter it accepts is similar to that used by [axios](https://github.com/axios/axios/blob/master/README.md). In our example above, we use this function to create a `todo` in a function named `createTodo`.
 
 The rest of our application is self explanatory since its just basic `reactJs`. Please refer to the [Mutation Api Reference](mutation_component_api_overview.md) for more insights intow what is achievable by the `Mutation` component.

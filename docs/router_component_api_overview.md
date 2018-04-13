@@ -62,7 +62,7 @@ This prop can be use to specify an array of queries to prefetch before routing t
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | operation | string | Yes | This is the accessor that is used to fetch the data. Please refer to the [Kunyora tutorial](kunyora_tutorial.md) for a brief of how this is formed |
-| config | Object | No | this is similar to the axios config supplied to its instance. This is sent with the request. Please refer to the [axios](axios.com) docs |
+| config | Object | No | this is similar to the axios config supplied to its instance. This is sent with the request. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) docs |
 | fetchPolicy | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" ) | No (defaults to ("cache-first")) | specify the fetch type for the query |
 
 ### `onRequestRoute`

@@ -192,4 +192,4 @@ let client = kunyoraClient({ ...config });
 client["YOUR_ACCESSOR"]({ params: {}, data: {}, ...otherAxiosConfigs });
 ```
 
-The instance config is very similar to that provided by axios. Please refer to the [axios documentation](https:www.github.com/axios)
+The instance config is very similar to that provided by axios. Please refer to the [axios documentation](https://github.com/axios/axios/blob/master/README.md)

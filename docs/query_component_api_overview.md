@@ -82,7 +82,7 @@ specifies an object that contains the `fetchPolicy` and the `config` properties 
 | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" | No |
 
 **options.config**
-The configuration specified here is similar to that passed to the client instance. Please refer to the axios documentation for a full insight into the keys exposed by this property [axios](axios.com). This property is however not `required` when instantiating a request.
+The configuration specified here is similar to that passed to the client instance. Please refer to the axios documentation for a full insight into the keys exposed by this property [axios](https://github.com/axios/axios/blob/master/README.md). This property is however not `required` when instantiating a request.
 
 ## Parameters passed to this.props.children
 
@@ -116,7 +116,7 @@ fetchMore({
 
 This is a function that cen be used to fetch more queries from the Api. This function is ideal when one wants to fetch more contents like for instance in a list that has a fetch more functionality. `updateQuery` must be specified when `fetchMore` is called and a new `Object` must be returned which would be used to update the state internally. `updateQuery` can use the `previousResult` and the `fetchMoreResult` parameters to form a new Object which would update the state.
 
-`config` is similar to that used by `axios`, so please refer to the [axios](axios.com) documentation for an insight into what parameters can be supplied.
+`config` is similar to that used by `axios`, so please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for an insight into what parameters can be supplied.
 
 **parameters used with updateQuery**
 
@@ -131,7 +131,7 @@ This is a function that cen be used to fetch more queries from the Api. This fun
 refetchQuery({ ...config });
 ```
 
-This is a function which can be used to refetch a query. The `config` object can be specified here and if it is not specified here, then the `Query`component defaults to using the initial configuration specified by the query. The `config` object is similar to that passed to the axios instance, so please refer to the [axios](axios.com) documentation for a full insight into the properties that can be used in the config object.
+This is a function which can be used to refetch a query. The `config` object can be specified here and if it is not specified here, then the `Query`component defaults to using the initial configuration specified by the query. The `config` object is similar to that passed to the axios instance, so please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the properties that can be used in the config object.
 
 | Name         | Type     |
 | ------------ | -------- |

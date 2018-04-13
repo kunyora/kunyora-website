@@ -50,7 +50,7 @@ specifies an object that contains the `config` and the `refetchQueries` properti
 | Object | No       |
 
 **options.config**
-The configuration specified here is similar to that passed to the client instance. Please refer to the axios documentation for a full insight into the keys exposed by this property [axios](axios.com). This property is however not `required` when instantiating a request.
+The configuration specified here is similar to that passed to the client instance. Please refer to the axios documentation for a full insight into the keys exposed by this property [axios](https://github.com/axios/axios/blob/master/README.md). This property is however not `required` when instantiating a request.
 
 **options.refetchQueries**
 
@@ -63,10 +63,10 @@ This can be used to refetch queries automatically when a mutation has been carri
 **Object.configs of refetchQueries**
 This are the Object that the `Mutation` component calls after a mutation has been performed.
 
-| Name      | Type   | Required | Description                                                                                                                                                                                                                                                         |
-| --------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| operation | string | Yes      | specifies the `accessor` that should be used in making the `get` request                                                                                                                                                                                            |
-| config    | Object | No       | specifies the config to send with the query which is to be sent. It is similar to the configuration passed to the `axios` instance, so please refer to [axios](axios.com) documentation for a full insight into the properties that can be specified in this object |
+| Name      | Type   | Required | Description                                                                                                                                                                                                                                                                                                    |
+| --------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| operation | string | Yes      | specifies the `accessor` that should be used in making the `get` request                                                                                                                                                                                                                                       |
+| config    | Object | No       | specifies the config to send with the query which is to be sent. It is similar to the configuration passed to the `axios` instance, so please refer to [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the properties that can be specified in this object |
 
 ## Parameters passed to this.props.children
 
@@ -85,4 +85,4 @@ This is an object which contains the information that specifies the state of the
 
 ### `mutate(config)`
 
-This is a function that mutate the api. This function takes a single parameter which is the config it sends along while making the mutation. The config specified in the `mutate` function is similar to that specified in the `axios` instance. Please check the [axios](axios.com) for an insight into the keys that can be specified in this object.
+This is a function that mutate the api. This function takes a single parameter which is the config it sends along while making the mutation. The config specified in the `mutate` function is similar to that specified in the `axios` instance. Please check the [axios](https://github.com/axios/axios/blob/master/README.md) for an insight into the keys that can be specified in this object.
