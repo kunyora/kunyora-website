@@ -4,7 +4,7 @@ Thank you for your interest in contributing to the Kunyora docs which is the sam
 
 ## Code of Conduct
 
-We have adopted a code of Conduct that we expect project participants to adhere to. Please [`read the full text`](https://github.com/kunyora/kunyora-website/blob/master/CODE_OF_CONDUCT.md)
+We have adopted a code of Conduct that we expect project participants to adhere to. Please [read the full text](https://github.com/kunyora/kunyora-website/blob/master/CODE_OF_CONDUCT.md)
 
 ## Guidelines for Text
 
