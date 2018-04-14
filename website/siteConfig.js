@@ -28,7 +28,7 @@ const siteConfig = {
     { page: "community", label: "Community" },
     { blog: true, label: "Blog" },
     { href: repoUrl, label: "Github" },
-    { doc: "query_component", label: "React-Kunyora" }
+    { href: "https://github.com/kunyora/react-kunyora", label: "React-Kunyora" }
   ],
   users,
   /* path to images for header/footer */
