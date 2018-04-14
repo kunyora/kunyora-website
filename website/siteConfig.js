@@ -6,6 +6,7 @@
  */
 
 /* List of projects/orgs using your project for the users page */
+
 const users = [
   {
     caption: "User1",
@@ -22,7 +23,6 @@ const siteConfig = {
   tagline: "A flexible Rest Client for Javascript web and native applications",
   url: "https://kunyora.github.io" /* your website url */,
   baseUrl: "/kunyora/" /* base url for your project */,
-  projectName: "kunyora.github.io",
   headerLinks: [
     { doc: "getting_started", label: "Docs" },
     { page: "community", label: "Community" },
@@ -53,8 +53,9 @@ const siteConfig = {
   },*/
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright: "Copyright © " + new Date().getFullYear() + " StackBench",
-  // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
-  projectName: "kunyora", // or set an env variable PROJECT_NAME
+  organizationName: "kunyora", // or set an env variable ORGANIZATION_NAME
+  projectName: "kunyora", // or set an env variable PROJECT_NAME,
+  editUrl: "https://github.com/kunyora/kunyora-website/blob/master/docs/",
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: "solarized-dark"
