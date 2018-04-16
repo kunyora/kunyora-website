@@ -28,7 +28,11 @@ const siteConfig = {
     { page: "community", label: "Community" },
     { blog: true, label: "Blog" },
     { href: repoUrl, label: "Github" },
-    { href: "https://github.com/kunyora/react-kunyora", label: "React-Kunyora" }
+    {
+      href: "https://github.com/kunyora/react-kunyora",
+      label: "React-Kunyora"
+    },
+    { search: true }
   ],
   users,
   /* path to images for header/footer */
@@ -62,9 +66,13 @@ const siteConfig = {
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl
+  repoUrl,
   /* On page navigation for the current documentation page */
   // onPageNav: 'separate',
+  algolia: {
+    apiKey: "d39fbbb67f85db6ed167f93a427b9456",
+    indexName: "kunyora"
+  }
 };
 
 module.exports = siteConfig;
