@@ -21,7 +21,7 @@ This tutorial would be focused on its integration with ReactJs which is the only
 
 Great, now we would assume that we have successfully installed the client library using npm or yarn. Let's go ahead to initialize our client based code.
 
-`Index.js` file, let's import `KunyoraClient`</span> from `kunyora` and add `baseURL` and the `nouns` property to it. The `baseURL` property should contain your restful api URL while the `nouns` is an array containing an Object which specifies the `path` and an optional `name` to use with the particular path. In our case, the full url for this request becomes `http://localhost:3000/api/v1/admin/greeting` which can be queried using `getGreeting` (get acting as a resource appender created by KunyoraClient and Greeting being what you supplied as the name; but camelcased with the appender). Please refer to the [Kunyora docs](kunyora.md) for a more detailed explanation.
+`Index.js` file, let's import `KunyoraClient`</span> from `kunyora` and add `baseURL` and the `nouns` property to it. The `baseURL` property should contain your restful api URL while the `nouns` is an array containing an Object which specifies the `path` and an optional `name` to use with the particular path. In our case, the full url for this request becomes `http://localhost:3000/api/v1/admin/greeting` which can be queried using `getGreeting` (get acting as a resource appender created by KunyoraClient and Greeting being what you supplied as the name; but camelcased with the appender). Please refer to the [Kunyora docs](kunyora_tutorial.md) for a more detailed explanation.
 
 ```javascript
 /**

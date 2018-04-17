@@ -62,7 +62,7 @@ const siteConfig = {
   editUrl: "https://github.com/kunyora/kunyora-website/blob/master/docs/",
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: "solarized-dark"
+    theme: "solarized-light"
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
