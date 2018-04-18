@@ -13,12 +13,10 @@ In this section, we will examine a very comprehensive tutorial on using `kunyora
 
 ## Building a Simple Calculator
 
-In this tutorial, we would be building a simple calculator which would interact with our restful backend in nodeJs. You can make use of any backend as the same principles still applies.
-
-This would be codes in a pure Javascript environment, no `ReactJs, VueJs or even AngularJS`. The main functions of this calculator would be done in steps.
+In this tutorial, we would be building a simple calculator which would interact with our restful backend in nodeJs. You can make use of any backend as the same principles still applies. The main functions of this calculator would be done in steps.
 
 * The calculator would need to save the name of the current user using a `post` request.
-* The calculator would need to add 2 numbers together by sending a `get` request with the 2 numbers as `database queries`
+* The calculator would need to add 2 numbers together by sending a `get` request with the 2 numbers as queries
 
 Simple Right!!! , Yah!!!. Now lets dive in and see how we can accomplish this with `kunyora`
 
@@ -185,7 +183,7 @@ In our sample code above, we expose `/user` and `/compute` as `paths` having `na
 
 * **thenables**: This is a `success` object containing the name used by `KunyoraClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers. It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method basically helps in mapping successful database response to their respective handlers. In the example code above, we handle `createUser` and `getCompute` api success response. The response object is passed as a parameter to their respective functions. Please refer to the thenables section of the [Api reference](kunyora_api_reference.md) for more details on this property and the argument its functions are bounded to.
 
-* **catchables**: This is an `error` object containing the name used by `KunyoraClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers.It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method handles errors from the api through the mapped keys. The error Object is passed as a parameter to their respective functions. Please refer to the catchables section of the [Api reference](kunyora_api_reference.md) for more details on this property and the argument its functions are bounded to.
+* **catchables**: This is an `error` object containing the name used by `KunyoraClient` to interact with your apis as keys which would be used in mapping the requests to their respective handlers. It also contains 4 method keys by default; these method keys include `get, update, delete and create`. The method handles errors from the api through the mapped keys. The error Object is passed as a parameter to their respective functions. Please refer to the catchables section of the [Api reference](kunyora_api_reference.md) for more details on this property and the argument its functions are bounded to.
 
 The client instance exposes various methods that can then be used to interact with the Api. This methods are formed from the same approach that was explained above in the [nouns section](kunyora_tutorial.md). In our case, the client exposes `createUser` and `getCompute` as methods. This methods could also take a config which is typically similar to that supplied to the `axios` instance during initialization. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) or the [Api reference](kunyora_api_reference.md) for a full insight into the config object.
 

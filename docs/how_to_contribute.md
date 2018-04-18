@@ -3,27 +3,25 @@ id: how_to_contribute
 title: How to Contribute
 ---
 
-Kunyora is one of the few open source projects tailored to address the problems of speed at the long run, which makes it a very interesting project you might want to invest your time with as an open sourcer. If you are interested in contributing to this to Kunyora, hoepfully this documentation would make the process for contributing clear.
+Kunyora is one of the few open source projects tailored to address the problems of speed at the long run, which makes it a very interesting project you might want to invest your time with as an open sourcer. If you are interested in contributing to Kunyora, hoepfully this documentation would make the process for contributing clear.
 
 ## Code of Conduct
 
-Kunyora has adopted a Code of Conduct that we expect project participants to adhere to. Please read the [full text article](codeofConduct.com) to understand what actions will and will not be tolerated.
+Kunyora has adopted a Code of Conduct that we expect project participants to adhere to. Please read the [full text article](https://github.com/kunyora/react-kunyora/blob/master/CODE_OF_CONDUCT.md) to understand what actions will and will not be tolerated.
 
 ## Get Involved
 
 There are many ways to contriute to kunyora and the client libraries such as react-kunyora, many of which might not involve you writing any code. Here is a few ideas on getting started:
 
-* Simply start using kunyora. Go through the [Getting Started](getting_started_md) guide. Does everythign work as expected? if no, then submit an [issue](github.com)
+* Simply start using kunyora. Go through the [Getting Started](getting_started_md) guide. Does everythign work as expected? if no, then submit an [issue](https://github.com/kunyora/kunyora/issues)
 
-* Read through the [Kunyora Docs](kunyora.com). If you find anything that seems confusing or unclear, then you can make edits by clicking `Edits` at the top of the page.
+* Read through the [Kunyora Docs](https://kunyora.github.io/kunyora). If you find anything that seems confusing or unclear, then you can make edits by clicking `Edits` at the top of the page.
 
-* Browse through [Stack Overflow](stackoverflow.com) and answer questions. This would help you get familiar with common pitfalls and make you stay more careful when contributing.
-
-* Take a look at the [requested features](todo.md) by the community and try opening a pull request if there are any that you can solve.
+* Take a look at the [requested features](todos.md) by the community and try opening a pull request if there are any that you can solve.
 
 ## How we make releases
 
-Kunyora currently uses semantic versioning, which allows us to structure the library in a more predictable more needed for our users to understand release versions better. Also we would try as much as possible to keep the master branch as stable as possible with tests passing. Also we believe in testing bugs fixes and new features throughly before merging to master.
+Kunyora currently uses semantic versioning, which allows us to structure the library in a more predictable way needed for our users to understand release versions better. Also we would try as much as possible to keep the master branch as stable as possible with tests passing. Also we believe in testing bugs fixes and new features thoroughly before merging to master.
 
 ## Styling
 

@@ -23,6 +23,6 @@ export default (App = props => (
 ));
 ```
 
-The above code just wraps the rest of our application within the `KunyoraProvider` top level component and passes the `client` and the `store` props to it. The `client` props is created from `KunyoraClient` and the `store` is exposed by the `client` itself.
+The above code just wraps the rest of our application within the `KunyoraProvider` top level component and passes the `client` and the `store` prop to it. The `client` prop is created from `KunyoraClient` and the `store` is exposed by the `client` itself.
 
 Please check the [Api reference](kunyora_provider_api_reference.md) for better insight into the `KunyoraProvider` component.

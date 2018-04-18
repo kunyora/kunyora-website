@@ -19,7 +19,7 @@ const siteConfig = {
     { search: true }
   ],
   headerIcon: "img/headerIcon.png",
-  footerIcon: "img/tabIcon.svg",
+  footerIcon: "img/headerIcon.png",
   favicon: "img/tabIcon.png",
   colors: {
     primaryColor: "#0d47a1",

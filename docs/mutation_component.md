@@ -17,7 +17,7 @@ In this section of the documentation, we would be creating a todo list applicati
 
 ### **Creating the client**
 
-Here, we would be creating the client for our application. We would assume that you are familiar with creating the a client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](kunyora_tutorial.md) and the [Kunyora Api Reference Configuration section](kunyora_api_reference.md#client-configration).
+Here, we would be creating the client for our application. We would assume that you are familiar with creating the client already and therefore we would explain other details that you should be aware of when using our library with `reactJs`. However, if you do not have enough knowledge about creating a `client`, then check our [`indepth tutorial docs`](kunyora_tutorial.md) and the [Kunyora Api Reference Configuration section](kunyora_api_reference.md#client-configration).
 
 ```javascript
 /**
@@ -88,7 +88,7 @@ class List extends React.PureComponent {
           renderLoading={<span> ...Loading </span>}
           renderError={<span> Error occurred while loading Todo </span>}
         >
-          {todo => todo.data.map((todo, i) => <p key={i}>{todo}</p>)}
+          {todo => todo.data.map((todo, i) => <p key={i}>{todo.content}</p>)}
         </Query>
       </div>
     );
@@ -109,7 +109,7 @@ export default (TodoList = props => (
 
 The code above creates a todo by sending a `post` request to the database which typically adds a new `todo` to our online store. It also informs the user of the `loading` progress of the todo to be added as well as generate a list of recently added `todos`. We make use of two component which we import from `react-kunyora`. The `Query` component helps in fetching a list of recently added `todos`. You can refer to the [Query tutorial](query_component.md) for a short tutorial on using the `Query` component, thereafter check out the [Query Api docs](query_component_api_overview.md) for references on this component.
 
-The `Mutation` component is used in our exmaple above to create the `todo` since it sends a `post` request which creates the text entered by our user. Let's go ahead to explain the props we used in the `Mutation`component to achieve our purpose.
+The `Mutation` component is used in our example above to create the `todo` since it sends a `post` request which creates the text entered by our user. Let's go ahead to explain the props we used in the `Mutation`component to achieve our purpose.
 
 * **operation** : This props is used to specify the command to run. Typically in a mutation request, it is formed by camel-casing `create` which is mapped to `post`, `update` mapped to `put`, `partUpdate` and `delete` with the `name` or `path` attribute supplied by the user when creating the `client` and in our case, this is `todo`, hence the operation `createTodo`. For a full understanding of how `accessors` are formed, please refer to the [Indepth tutorial](query_component.md) section of the application for a more detailed explanation of this.
 

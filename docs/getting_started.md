@@ -17,7 +17,7 @@ To do this, cd into the project directory and enter the following commands
   yarn add kunyora
 ```
 
-However, if you are using a view library like ReactJs, then you can cd into the reactJs project directory and yarn add or npm install kunyora. This would automatically the latest version of kunyora too.
+However, if you are using a view library like ReactJs, then you can cd into the reactJs project directory and yarn add or npm install react-kunyora. This would automatically install the latest version of kunyora too.
 
 ```powershell
   #For use with reactJs
@@ -29,4 +29,4 @@ However, if you are using a view library like ReactJs, then you can cd into the 
 
 # What's Next?
 
-Congratulations,you have successfully installed kunyora. What follows are getting acquinted with the rudiments of the library. If you are curious to learn more about the library then check this out [Quick tutorial section](quick_tutorial.md)
+Congratulations, you have successfully installed kunyora. What follows are getting acquinted with the rudiments of the library. If you are curious to learn more about the library then check this out the [Quick tutorial section](quick_tutorial.md)

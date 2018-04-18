@@ -3,7 +3,7 @@ id: router_component
 title: Router Component
 ---
 
-The Router component is one which helps in initializing a request handshake between 2 pages or screens. It is a low level api built using the common `render props` reactJs pattern. This low level component does not work on mobile i.e `react-native` or any other Javascript based mobile native library except hybrid based i.e `Cordova`. This component is quite useful when you are building a web app that requires a `screen` to download some contents before pushing the user to the next route. The `Router`component is conceptually used in this scenario to instantiate the download the contents before the Push.
+The Router component is one which helps in initializing a request handshake between 2 pages or screens. It is a low level api built using the common `render props` reactJs pattern. This low level component does not work on mobile i.e `react-native` or any other Javascript based mobile native library except hybrid based i.e `Cordova`. This component is quite useful when you are building a web app that requires a `screen` to download some contents before pushing the user to the next route. The `Router`component is conceptually used in this scenario to instantiate the download before the Push.
 
 Also, the push can be implemented irrespective of the routing library being used. with the `Router` component, one could specify that screens should download both the `Component` and fetch the `queries` which would be displayed on the next screen before actually performing the route.
 Therefore, in this tutorial, we would be building a very small application which would show the `Router` component in action. Let's swing into action to se how this is done.
@@ -19,7 +19,7 @@ In this section, we would be building a very simple page navigator. Our page nav
 
 ## Setting up the routes
 
-In this section, we would setting up the routes for our navigator based application. As stated earlier, we would be making use of `react-router v4` as our routing library. We would assume that you are quite familiar with `react-router` and therefore skip all the details in explaining the library itself. Please refer to the [react-router](reactRouter.com) site if you are not familiar with using the library.
+In this section, we would be setting up the routes for our navigator based application. As stated earlier, we would be making use of `react-router v4` as our routing library. We would assume that you are quite familiar with `react-router` and therefore skip all the details in explaining the library itself. Please refer to the [react-router](reactRouter.com) site if you are not familiar with using the library.
 
 ```javascript
 /**

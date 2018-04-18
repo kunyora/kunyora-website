@@ -3,7 +3,7 @@ id: query_component
 title: Query Component
 ---
 
-A Query component is a lower level component which you would typically use in making **only** `get reqeusts`, hence the component name `Query`. Queries are typically operations performed on a database which do not mutate(to cause a change) the database. The Query component is a component exported from `react-kunyora` which you could use to connect your UI to datas sent by your api. It is also a totally declarative API which allows you to perform queries while handling states like loading and error in a totally declarative manner.
+A Query component is a lower level component which you would typically use in making **only** `get reqeusts`, hence the component name `Query`. Queries are typically operations performed on a database which do not mutate(to cause a change) the database. The Query component is a component exported from `react-kunyora` which you could use to connect your UI to datas sent by your api. It is also a declarative API which allows you to perform queries while handling states like loading and error in a declarative manner.
 
 In this section of the documentation, we would be creating a very `simple notification list application`, so sit tight and get your hands ready to practice some query codes.
 
@@ -100,6 +100,6 @@ Now, lets go ahead to explain the parameters passed to our `this.props.children`
 
 * **refetchQuery** : This is a function used to refetch a query
 
-The `Query` component also uses a lot of other props such as the `skip` props to skip queries, and the `notification.data` property also contains an a `isInitialDataSet` boolean field which can tell your application if an initial data has been loaded before by the query or not.
+The `Query` component also uses a lot of other props such as the `skip` props to skip queries, and the `notification.data` property also contains an `isInitialDataSet` boolean field which can tell your application if an initial data has been loaded before by the query or not.
 
 Please refer to the [Query Api Overview](query_component_api_overview.md) section of this docs for more details on the `Query` component.
