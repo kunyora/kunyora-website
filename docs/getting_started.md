@@ -29,4 +29,4 @@ However, if you are using a view library like ReactJs, then you can cd into the 
 
 # What's Next?
 
-Congratulations,you have successfully installed kunyora. What follows are getting acquinted with the rudiments of the library. If you are curious to learn more about the library then check this out [Quick tutorial section](quick_tutorial.html)
+Congratulations,you have successfully installed kunyora. What follows are getting acquinted with the rudiments of the library. If you are curious to learn more about the library then check this out [Quick tutorial section](quick_tutorial.md)

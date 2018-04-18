@@ -114,7 +114,7 @@ export default (Notification = props => (
     {notifications => (
       <ul>
         {notifications.map((notification, i) => (
-          <li key={i}>{notification}</li>
+          <li key={i}>{notification.name}</li>
         ))}
       </ul>
     )}
