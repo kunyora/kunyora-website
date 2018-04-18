@@ -9,7 +9,7 @@ To get started with this library, you need to set up [Node](https://nodejs.org/e
 
 To do this, cd into the project directory and enter the following commands
 
-```javascript
+```powershell
   #For use in a Javasript non-native linked environment
 
   npm install --save kunyora
@@ -19,7 +19,7 @@ To do this, cd into the project directory and enter the following commands
 
 However, if you are using a view library like ReactJs, then you can cd into the reactJs project directory and yarn add or npm install kunyora. This would automatically the latest version of kunyora too.
 
-```javascript
+```powershell
   #For use with reactJs
 
   npm install --save react-kunyora
