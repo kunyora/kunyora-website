@@ -7,7 +7,7 @@ A Query component is a lower level component which you would typically use in ma
 
 In this section of the documentation, we would be creating a very `simple notification list application`, so sit tight and get your hands ready to practice some query codes.
 
-* [`Creating a Notification List Application`](query_component.md#creating-a-notification-list_application)
+* [`Creating a Notification List Application`](query_component.md#creating-a-notification-list-application)
 * [`Creating the client`](query_component.md#creating-the-client)
 * [`Connecting to our data using the Query component`](query_component.md#connecting-to-our-data-using-the-query-component)
 
