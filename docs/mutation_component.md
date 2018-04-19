@@ -27,12 +27,13 @@ import React from "react";
 import { render } from "react-dom";
 import KunyoraClient from "kunyora";
 import { KunyoraProvider } from "react-kunyora";
+import registerServiceWorker from "./registerServiceWorker";
 
 import TodoList from "./TodoList";
 
 const client = KunyoraClient({
   baseURL: "https://test-kunyora.herokuapp.com",
-  nouns: [{ path: "/todo", name: "todo" }]
+  nouns: [{ path: "todo", name: "todo" }]
 });
 
 const App = () => (
@@ -43,7 +44,8 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(App, document.getElementById("app"));
+render(<App />, document.getElementById("app"));
+registerServiceWorker();
 ```
 
 The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
@@ -76,26 +78,33 @@ class List extends React.PureComponent {
         <textarea
           type={"text"}
           placeholder="enter a todo"
+          value={todo}
           onChange={ev => this.setState({ todo: ev.target.value })}
-        >
-          {todo}
-        </textarea>
+        />
         <span>{loading ? "Adding...." : "Added"}</span>
-        <button onSubmit={this.createTodo}>Create Todo</button> <br />
+        <button onClick={this.createTodo}>Create Todo</button> <br />
         <b> List of Added Todos </b>
         <Query
           operation="getTodo"
           renderLoading={<span> ...Loading </span>}
           renderError={<span> Error occurred while loading Todo </span>}
         >
-          {todo => todo.data.map((todo, i) => <p key={i}>{todo.content}</p>)}
+          {todo => {
+            let component =
+              todo.data.length === 0 ? (
+                <p> No Todo Yet </p>
+              ) : (
+                todo.data.map((todo, i) => <p key={i}>{todo.content}</p>)
+              );
+            return component;
+          }}
         </Query>
       </div>
     );
   }
 }
 
-export default (TodoList = props => (
+const TodoList = props => (
   <Mutation
     operation="createTodo"
     options={{ refetchQueries: [{ operation: "getTodo" }] }}
@@ -104,7 +113,9 @@ export default (TodoList = props => (
       <List mutate={mutate} loading={mutationState.loading} />
     )}
   </Mutation>
-));
+);
+
+export default TodoList;
 ```
 
 The code above creates a todo by sending a `post` request to the database which typically adds a new `todo` to our online store. It also informs the user of the `loading` progress of the todo to be added as well as generate a list of recently added `todos`. We make use of two component which we import from `react-kunyora`. The `Query` component helps in fetching a list of recently added `todos`. You can refer to the [Query tutorial](query_component.md) for a short tutorial on using the `Query` component, thereafter check out the [Query Api docs](query_component_api_overview.md) for references on this component.

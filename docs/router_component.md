@@ -29,12 +29,13 @@ import React from "react";
 import { render } from "react-dom";
 import KunyoraClient from "kunyora";
 import { KunyoraProvider } from "react-kunyora";
+import registerServiceWorker from "./registerServiceWorker";
 
 import AppRoutes from "./AppRoutes";
 
 const client = KunyoraClient({
   baseURL: "https://www.test-kunyora.herokuapp.com",
-  nouns: [{ path: "/notification", name: "notification" }]
+  nouns: [{ path: "notification", name: "notification" }]
 });
 
 const App = props => (
@@ -42,6 +43,9 @@ const App = props => (
     <AppRoutes />
   </KunyoraProvider>
 );
+
+render(<App />, document.getElementById("app"));
+registerServiceWorker();
 ```
 
 In the code above, we set up the client of the application using the `KunyoraProvider` top level component and `KunyoraClient`, please refer to the [KunyoraProvider Docs](kunyora_provider_component.md) to learn about this component and the [`Kunyora Docs`](kunyora_tutorial.md) for more reference.
@@ -57,14 +61,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Initiator from "./Initiator";
 import Notification from "./Notification";
 
-export default (AppRoutes = props => (
+const AppRoutes = props => (
   <Router>
     <Switch>
-      <Route path="/" component={Initiator} />
-      <Route path="/notification" component={Notification} />
+      <Route path="/" component={Initiator} exact />
+      <Route path="/notification" component={Notification} exact />
     </Switch>
   </Router>
-));
+);
+
+export default AppRoutes;
 ```
 
 In the code above, we setup our routes.
@@ -80,7 +86,7 @@ Let's create the `Initiator` screen of our application. This screen would be use
 import React from "react";
 import { Router } from "react-kunyora";
 
-export default (Initiator = props => (
+const Initiator = props => (
   <Router
     name="Notification"
     loader={() => import("./Notification")}
@@ -88,10 +94,12 @@ export default (Initiator = props => (
     onRequestRoute={() => props.history.push("/notification")}
   >
     {(routeState, fetchProgress, push) => (
-      <button onClick={push}>View Notifications</button>
+      <button onClick={() => push()}>View Notifications</button>
     )}
   </Router>
-));
+);
+
+export default Initiator;
 ```
 
 In the above, we supply a name for our route which is required. If you are code splitting from the route level, then make sure that the `Connector` and the `Router` both have the same name. The `loader` prop is used to prefetch that route before initial route, the `resource` prop is used to specify a list of queries to prefetch before routing the user to the next screen. The `onRequestRoute` prop should be used to specify a function which would be called when the contents have been downloaded. In our case, we use `react-router` to oute the user to the next screen.
@@ -109,17 +117,23 @@ Here, we would create the `Notification` component which would be used in displa
 import React from "react";
 import { Query } from "react-kunyora";
 
-export default (Notification = props => (
+const Notification = props => (
   <Query operation="getNotification">
-    {notifications => (
-      <ul>
-        {notifications.map((notification, i) => (
-          <li key={i}>{notification.name}</li>
-        ))}
-      </ul>
-    )}
+    {notifications => {
+      let component =
+        notifications.data !== undefined ? (
+          <ul>
+            {notifications.data.map((notification, i) => (
+              <li key={i}>{notification.name}</li>
+            ))}
+          </ul>
+        ) : null;
+      return component;
+    }}
   </Query>
-));
+);
+
+export default Notification;
 ```
 
 Ideally, we are suppose to code split at the route level within the `Notification` component using the `Connector` component. However, you can check up our series of tutorials for an example of how to achieve this purpose.

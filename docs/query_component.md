@@ -27,12 +27,13 @@ import React from "react";
 import { render } from "react-dom";
 import KunyoraClient from "kunyora";
 import { KunyoraProvider } from "react-kunyora";
+import registerServiceWorker from "./registerServiceWorker";
 
 import NotificationList from "./NotificationList";
 
 const client = KunyoraClient({
   baseURL: "https://test-kunyora.herokuapp.com",
-  nouns: [{ path: "/notification", name: "notification" }]
+  nouns: [{ path: "notification", name: "notification" }]
 });
 
 const App = () => (
@@ -43,7 +44,8 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(App, document.getElementById("app"));
+render(<App />, document.getElementById("app"));
+registerServiceWorker();
 ```
 
 The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
@@ -74,7 +76,7 @@ export default (NotificationList = props => (
           <li key={i}>{notification.name}</li>
         ))}
       </div>,
-      <button key={1} onClick={refetchQuery}>
+      <button key={1} onClick={() => refetchQuery()}>
         Refresh List
       </button>
     ]}

@@ -6,7 +6,6 @@ title: InDepth Tutorial
 In this section, we will examine a very comprehensive tutorial on using `kunyora` for a simple Javascript application. we would cover the usage of the methods exposed by the library with detailed explanations of each of its methods. The `Kunyora` library was built on the popular `axios` library which is its underlaying library for carrying out request. We also assume that you have installed the library using npm or yarn. If you have not done so, please refer to the [installation](getting_started.md) guide to see how this is done. This tutorial would examine the basic usage of `kunyora` without any view library integration, so grab your laptop, seat tight and set your fingers ready to code. Yah!!!
 
 * [`Building a Simple Calculator`](kunyora_tutorial.md#building-a-simple-calculator)
-* [`Creating the restful backend with NodeJs`](kunyora_tutorial.md#creating-the-restful-backend-with-nodejs)
 * [`Creating the basic html template for our application`](kunyora_tutorial.md#creating-the-basic-html-template-for-our-application)
 * [`Creating the Kunyora client code for our application`](kunyora_tutorial.md#creating-the-kunyora-client-code-for-our-application)
 * [`Creating a basic middleware`](kunyora_tutorial.md#creating-a-basic-middleware)
@@ -19,60 +18,6 @@ In this tutorial, we would be building a simple calculator which would interact 
 * The calculator would need to add 2 numbers together by sending a `get` request with the 2 numbers as queries
 
 Simple Right!!! , Yah!!!. Now lets dive in and see how we can accomplish this with `kunyora`
-
-### **Creating the restful backend with NodeJs**
-
-This part is now hosted on heroku. Just copy this url `https://www.test-kunyora.herokuapp.com`, So you might want to skip. However, if you are interested in checking out the implementation of your app on the server then read along.
-
-Let's create a simple restful backend in `nodeJs`. Note that this can be done in any server-side language of your choice as the same principles applies. We would be setting up an express server and setting up `CORS` with it in case you are on a different domain.
-
-```javascript
-var express = require("express");
-var bodyParser = require("body-parser");
-
-var app = express();
-var router = express.Router();
-
-//using cors
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Jwt"
-  );
-  next();
-});
-
-router.route("/user").post(function(req, res) {
-  var name = req.body.name;
-  if (name && name.trim().length !== 0) {
-    res.json({ status: "success" });
-  } else {
-    res.status(501).json({ status: "error", message: "unauthorized user" });
-  }
-});
-
-router.route("/compute").get(function(req, res) {
-  var num1 = req.query["num1"],
-    num2 = req.query["num2"];
-
-  if (num1 && num2) {
-    res.json({ status: "success", result: Number(num1) + Number(num2) });
-  } else {
-    res.status(400).json({ status: "error", message: "bad command" });
-  }
-});
-
-//setting up parser middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.listen(3000, function() {
-  console.log("server started successfully");
-});
-```
-
-Wow!!, so we are done with the basic server-side code. Hope its simple enough. All we just did above was to expose 2 routes. A `/user` route for making post request to save a user and a `/compute` route for making get request to perform the computation.
 
 ### **Creating the basic html template for our application**
 
@@ -115,11 +60,11 @@ var calculatorBtn = document.getElementById("calculateBtn"),
   result = document.getElementById("result"),
   num2 = document.getElementById("num2"),
   verifyUser = document.getElementById("verifyUser"),
-  client = KunyoraClient({
+  client = window.KunyoraClient({
     baseURL: "https://https://www.test-kunyora.herokuapp.com",
     nouns: [
-      { path: "/user", name: "user" },
-      { path: "/compute", name: "compute" }
+      { path: "user", name: "user" },
+      { path: "compute", name: "compute" }
     ],
     thenables: {
       createUser: function(response) {
@@ -140,7 +85,7 @@ var calculatorBtn = document.getElementById("calculateBtn"),
   });
 
 verifyUser.onclick = function() {
-  client.createUser({ data: JSON.stringify({ name: name.value }) });
+  client.createUser({ data: { name: name.value } });
 };
 
 calculatorBtn.onclick = function() {

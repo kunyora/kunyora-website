@@ -30,10 +30,12 @@ Let's develop the component in our application that would be used in collecting 
 
 ```javascript
 /**
- * UserInputCollector.js
+ * Index.js
  **/
 import React from "react";
 import { render } from "react-dom";
+import registerServiceWorker from "./registerServiceWorker";
+import { Connector } from "react-kunyora";
 
 export default class App extends React.PureComponent {
   state = {
@@ -46,31 +48,41 @@ export default class App extends React.PureComponent {
     let { name, paying, isInvoiceVisible } = this.state;
     return (
       <center>
-        <form>
-          <input type="text" value={name} /> <br />
-          <input type="number" value={paying} /> <br />
-          <button onClick={() => this.setState({ isInvoiceVisible: true })}>
-            Generate Report
-          </button>
-          <br />
-          <p style={{ marginTop: 20 }}>
-            {isInvoiceVisible && (
-              <Connector
-                name="invoice"
-                loadingComponent={<span>Generating</span>}
-                loader={() => import("./Invoice")}
-              >
-                {Invoice => <Invoice {...this.state} />}
-              </Connector>
-            )}
-          </p>
-        </form>
+        <input
+          type="text"
+          value={name}
+          onChange={evt => this.setState({ name: evt.target.value })}
+        />
+        <br />
+        <input
+          type="number"
+          value={paying}
+          onChange={evt => this.setState({ paying: evt.target.value })}
+        />
+        <br />
+        <button onClick={() => this.setState({ isInvoiceVisible: true })}>
+          Generate Report
+        </button>
+        <br />
+        <p style={{ marginTop: 20 }}>
+          {isInvoiceVisible && (
+            <Connector
+              name="invoice"
+              loadingComponent={<span>Generating</span>}
+              errorComponent={null}
+              loader={() => import("./Invoice")}
+            >
+              {Invoice => <Invoice {...this.state} />}
+            </Connector>
+          )}
+        </p>
       </center>
     );
   }
 }
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById("root"));
+registerServiceWorker();
 ```
 
 The above code simply creates a simple components which collects the name and the amount a user would be paying and feeds it to the `Invoice` component which would be dynamically loaded by the `Connector` when the `generate invoice` button is clicked. Also we see its quite easy to create a `Connector`, all we do is to supply the `name` prop for our `Connector` which is compulsory and can be anything, then we supply a `loadingComponent` prop which our `Connector` uses in displaying a `loading` notification when the `component` is being downloaded. Also we use a `loader` component which our component uses to dynamically import the new component.
@@ -82,8 +94,8 @@ Lets go ahead to finish the creation of our invoice by creating the `Report` com
  * Invoice.js
  */
 import React from "react";
-F;
-export default (Invoice = props => {
+
+const Invoice = props => {
   let balance = 10000 - Number(props.paying);
   return (
     <div>
@@ -93,7 +105,9 @@ export default (Invoice = props => {
       <span>Balance: {balance > 0 ? balance : 0} </span>
     </div>
   );
-});
+};
+
+export default Invoice;
 ```
 
 The above code just creates a simple Invoice. Run your application to see it works. Please check the [Connector Api reference](connector_component_api_overview.md)

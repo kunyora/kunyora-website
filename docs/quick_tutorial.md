@@ -45,6 +45,7 @@ import { render } from "react-dom";
 
 import { KunyoraProvider } from "react-kunyora";
 import HelloKunyora from "./HelloKunyora";
+import registerServiceWorker from "./registerServiceWorker";
 
 const App = () => (
   <KunyoraProvider client={client} store={client.store}>
@@ -54,7 +55,8 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(App, document.getElementById("app"));
+render(<App />, document.getElementById("app"));
+registerServiceWorker();
 ```
 
 ## Request data
@@ -73,11 +75,13 @@ In response to the request made, `react-kunyora` passes `queryResult, fetchMore,
 import React from "react";
 import { Query } from "react-kunyora";
 
-export default (HelloKunyora = props => (
+const HelloKunyora = props => (
   <Query operation="getGreeting">
-    {(queryResult, fetchMore, refetchQuery) => <div>{queryResult}</div>}
+    {(queryResult, fetchMore, refetchQuery) => <div>{queryResult.data}</div>}
   </Query>
-));
+);
+
+export default HelloKunyora;
 ```
 
 Congrats, you just succeeded in creating your first `react-kunyora and kunyora` application. You should be excited by now by the amount of declarative code we wrote to get this to work efficiently. Its time we get you into the deep bindings of the `Query` component, Please refer to the [Query docs](query_component.md) for a more detailed explanation.
