@@ -52,46 +52,48 @@ Finally, we get to integrate our html with our client side Javascript. Let's div
  */
 
 //you can use  your custom url if you wrote the above code yourself
-var calculatorBtn = document.getElementById("calculateBtn"),
-  name = document.getElementById("name"),
-  num1 = document.getElementById("num1"),
-  num2 = document.getElementById("num2"),
-  status = document.getElementById("status"),
-  result = document.getElementById("result"),
-  num2 = document.getElementById("num2"),
-  verifyUser = document.getElementById("verifyUser"),
-  client = window.KunyoraClient({
-    baseURL: "https://https://www.test-kunyora.herokuapp.com",
-    nouns: [
-      { path: "user", name: "user" },
-      { path: "compute", name: "compute" }
-    ],
-    thenables: {
-      createUser: function(response) {
-        status.innerHTML = "Verified";
+window.onload = function() {
+  var calculatorBtn = document.getElementById("calculateBtn"),
+    name = document.getElementById("name"),
+    num1 = document.getElementById("num1"),
+    num2 = document.getElementById("num2"),
+    status = document.getElementById("status"),
+    result = document.getElementById("result"),
+    num2 = document.getElementById("num2"),
+    verifyUser = document.getElementById("verifyUser"),
+    client = window.KunyoraClient({
+      baseURL: "http://localhost:8000/",
+      nouns: [
+        { path: "user", name: "user" },
+        { path: "compute", name: "compute" }
+      ],
+      thenables: {
+        createUser: function(response) {
+          status.innerHTML = "Verified";
+        },
+        getCompute: function(response) {
+          result.innerHTML = response.data.result;
+        }
       },
-      getCompute: function(response) {
-        result.innerHTML = response.result;
+      catchables: {
+        createUser: function(error) {
+          status.innerHTML = "Could not verify user";
+        },
+        getCompute: function(response) {
+          result.innerHTML = "Could not make calculations";
+        }
       }
-    },
-    catchables: {
-      createUser: function(error) {
-        status.innerHTML = "Could not verify user";
-      },
-      getCompute: function(response) {
-        result.innerHTML = response.result;
-      }
-    }
-  });
+    });
 
-verifyUser.onclick = function() {
-  client.createUser({ data: { name: name.value } });
-};
+  verifyUser.onclick = function() {
+    client.createUser({ data: { name: name.value } });
+  };
 
-calculatorBtn.onclick = function() {
-  var _num1 = num1.value,
-    _num2 = num2.value;
-  client.getCompute({ data: JSON.stringify({ num1: _num1, num2: _num2 }) });
+  calculatorBtn.onclick = function() {
+    var _num1 = num1.value,
+      _num2 = num2.value;
+    client.getCompute({ params: { num1: _num1, num2: _num2 } });
+  };
 };
 ```
 
