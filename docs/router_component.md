@@ -34,7 +34,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import AppRoutes from "./AppRoutes";
 
 const client = KunyoraClient({
-  baseURL: "https://www.test-kunyora.herokuapp.com",
+  baseURL: "https://kunyora.herokuapp.com/",
   nouns: [{ path: "notification", name: "notification" }]
 });
 

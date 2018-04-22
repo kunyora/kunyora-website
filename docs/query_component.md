@@ -32,7 +32,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import NotificationList from "./NotificationList";
 
 const client = KunyoraClient({
-  baseURL: "https://test-kunyora.herokuapp.com",
+  baseURL: "https://kunyora.herokuapp.com/",
   nouns: [{ path: "notification", name: "notification" }]
 });
 

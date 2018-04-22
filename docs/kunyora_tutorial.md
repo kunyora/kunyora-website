@@ -52,7 +52,7 @@ Finally, we get to integrate our html with our client side Javascript. Let's div
  */
 
 //you can use  your custom url if you wrote the above code yourself
-window.onload = function() {
+window.onload = function () {
   var calculatorBtn = document.getElementById("calculateBtn"),
     name = document.getElementById("name"),
     num1 = document.getElementById("num1"),
@@ -62,36 +62,38 @@ window.onload = function() {
     num2 = document.getElementById("num2"),
     verifyUser = document.getElementById("verifyUser"),
     client = window.KunyoraClient({
-      baseURL: "http://localhost:8000/",
+      baseURL: "https://kunyora.herokuapp.com/",
       nouns: [
         { path: "user", name: "user" },
         { path: "compute", name: "compute" }
       ],
       thenables: {
-        createUser: function(response) {
+        createUser: function (response) {
           status.innerHTML = "Verified";
         },
-        getCompute: function(response) {
+        getCompute: function (response) {
           result.innerHTML = response.data.result;
         }
       },
       catchables: {
-        createUser: function(error) {
+        createUser: function (error) {
           status.innerHTML = "Could not verify user";
         },
-        getCompute: function(response) {
+        getCompute: function (response) {
           result.innerHTML = "Could not make calculations";
         }
       }
     });
 
-  verifyUser.onclick = function() {
+  verifyUser.onclick = function () {
+    status.innerHTML = "Verifying...";
     client.createUser({ data: { name: name.value } });
   };
 
-  calculatorBtn.onclick = function() {
+  calculatorBtn.onclick = function () {
     var _num1 = num1.value,
       _num2 = num2.value;
+    result.innerHTML = "...Calculating";
     client.getCompute({ params: { num1: _num1, num2: _num2 } });
   };
 };
@@ -101,7 +103,7 @@ Okay, Whew!!! we are done typing. Try running your application in a browser to s
 
 The code above simply creates a KunyoraClient instance which your client-side Javascript code can call to perform the computation. So let's do some explaining of the config options.
 
-* **baseURL**: This url points to the api end point on the server. In our case, this is points to `https://https://www.test-kunyora.herokuapp.com`
+* **baseURL**: This url points to the api end point on the server. In our case, this is points to `https://kunyora.herokuapp.com/`
 
 * **nouns**: This is an array of type `Object or string`. `Object` types should contain a `path` property which specifies the route which the library should make a request to and an optional `name` property which would be used when quering the API. If an array containing strings is supplied to the `nouns` property of the client, then this should be the `path` that the library should make the request to.
 

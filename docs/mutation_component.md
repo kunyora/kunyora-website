@@ -32,7 +32,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import TodoList from "./TodoList";
 
 const client = KunyoraClient({
-  baseURL: "https://test-kunyora.herokuapp.com",
+  baseURL: "https://kunyora.herokuapp.com/",
   nouns: [{ path: "todo", name: "todo" }]
 });
 
