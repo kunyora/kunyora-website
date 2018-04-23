@@ -1,4 +1,4 @@
-# [kunyora.github.io/kunyora](https://kunyora.github.io/kunyora)
+# [kunyora.github.io/kunyora](https://kunyora.github.io/kunyora) &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md) 
 
 This repo contains the website documentation powering the [Kunyora website](https://kunyora.github.io/kunyora)
 
@@ -37,8 +37,8 @@ Please check the docusaurus documentation for an overview of the website structu
 
 ## License
 
-Kunyora is [MIT licensed](http://github.com/kunyora/kunyora/blob/master/LICENSE.md)
+React-Kunyora is [MIT licensed](./LICENSE)
 
-React-Kunyora is [MIT licensed](http://github.com/kunyora/react-kunyora/blob/master/LICENSE.md)
+Kunyora is [MIT licensed](https://github.com/kunyora/kunyora/blob/master/LICENSE).
 
-Kunyora-website is [MIT licensed](http://github.com/kunyora/kunyora-website/blob/master/LICENSE.md)
+Kunyora documentation is [MIT licensed](https://github.com/kunyora/kunyora-website/blob/master/LICENSE)
