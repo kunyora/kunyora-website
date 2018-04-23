@@ -41,7 +41,8 @@ const siteConfig = {
   algolia: {
     apiKey: "d39fbbb67f85db6ed167f93a427b9456",
     indexName: "kunyora"
-  }
+  },
+  gaTrackingId: "UA-117938006-1"
 };
 
 module.exports = siteConfig;
