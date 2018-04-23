@@ -122,6 +122,27 @@ class Features extends React.PureComponent {
         </Container>
         <br />
         <Container>
+          <FeatureTitle title="Write Codes that are not reusable, but also composable and disposable." />
+          <small style={{ fontSize: 15 }}>
+            Kunyora extends axios by making it easy to integrate data with your UI's.
+            With react-kunyora, you don't need to think about managing request states, neither do you need to think about managing loading, error or even data notifications imperatively.
+            You can now build apps that are not just resuable, but also composable and disposable.
+          </small>
+          <MarkdownBlock>
+            {`\`\`\` javascript
+              <Mutation
+                operation="createUser">
+                {(mutationState, mutate) => (
+                  <button onClick={() => mutate({data: {name: "Gbenga"}})}>
+                    Add User
+                  </button>
+                )}
+              </Mutation>
+          `}
+          </MarkdownBlock>
+        </Container>
+        <br />
+        <Container>
           <FeatureTitle title="Build for both native Android and Ios Platforms in React-Native" />
           <small style={{ fontSize: 15 }}>
             With Kunyora and its integrations with client libraries such as
