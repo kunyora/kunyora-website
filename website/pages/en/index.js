@@ -39,7 +39,7 @@ const HomeCallToAction = props => {
               GET STARTED
             </Button>
             <Button href={docUrl("quick_tutorial.html", language)}>
-              SAY HELLO
+              QUICK TUTORIAL
             </Button>
           </div>
         </div>
@@ -86,7 +86,7 @@ class HomeSplash extends React.Component {
                       GET STARTED
                     </Button>
                     <Button href={docUrl("quick_tutorial.html", language)}>
-                      SAY HELLO
+                      QUICK TUTORIAL
                     </Button>
                   </div>
                 </div>
