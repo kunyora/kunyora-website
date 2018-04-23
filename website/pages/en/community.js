@@ -21,7 +21,7 @@ class Community extends React.Component {
           </div>
           <h2> Twitter </h2>
           <div style={{ marginBottom: 20 }}>
-            For the latest news on Kunyora, follow <a href="https://twitter.com/David_Anis_s" target="blank">@David_Anis_s</a> and <a href="https://twitter.com/Kayslaycode" target="blank">@Kayslaycode</a> on Twitter. A public account would be created for the project shortly before we hit 1.0.
+            For the latest news on Kunyora, follow <a href="https://twitter.com/David_Ani_s" target="blank">@David_Ani_s</a> and <a href="https://twitter.com/Kayslaycode" target="blank">@Kayslaycode</a> on Twitter. A public account would be created for the project shortly before we hit 1.0.
           </div>
         </Container>
       </div>
