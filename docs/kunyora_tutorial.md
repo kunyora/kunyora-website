@@ -36,7 +36,7 @@ Since every application needs a UI for users to interact with, lets go ahead to 
     <button id="calculateBtn">Calculate</button>
   </div>
 
-  <script type="text/javascript" src="cdn_link"></script>
+  <script type="text/javascript" src="https://unpkg.com/kunyora@0.1.0/dist/kunyora.js"></script>
   <script type="text/javascript" src="calculator.js"></script>
 ```
 

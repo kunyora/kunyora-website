@@ -17,6 +17,12 @@ To do this, cd into the project directory and enter the following commands
   yarn add kunyora
 ```
 
+If you are not building a single page application, you can use Kunyora from the unpkg CDN. Just add the script below to your html template. To load a specific version of kunyora, Just replace `0.1.0` with the version number.
+
+```html
+  <script crossorigin src="https://unpkg.com/kunyora@0.1.0/dist/kunyora.js"></script>
+``` 
+
 However, if you are using a view library like ReactJs, then you can cd into the reactJs project directory and yarn add or npm install react-kunyora. This would automatically install the latest version of kunyora too.
 
 ```powershell
