@@ -107,8 +107,8 @@ class Features extends React.PureComponent {
           <FeatureTitle title="Build UI component and sync with data" />
           <small style={{ fontSize: 15 }}>
             Kunyora makes it easy to sync your UI's with your restful store by
-            removing the complexity in writing imperative codes and replacing
-            these codes with declarative codes without complicating data flow.
+            removing the complexity in writing imperative code and replacing
+            these code with declarative code without complicating data flow.
           </small>
           <MarkdownBlock>
             {`\`\`\` javascript
@@ -122,7 +122,7 @@ class Features extends React.PureComponent {
         </Container>
         <br />
         <Container>
-          <FeatureTitle title="Write Codes that are not just reusable, but also composable and disposable." />
+          <FeatureTitle title="Write Code that are not just reusable, but also composable and disposable." />
           <small style={{ fontSize: 15 }}>
             Kunyora extends axios by making it easy to integrate data with your UI's.
             With react-kunyora, you don't need to think about managing request states, neither do you need to think about managing loading, error or even data notifications imperatively.
