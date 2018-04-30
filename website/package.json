@@ -6,9 +6,14 @@
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
-    "rename-version": "docusaurus-rename-version"
+    "rename-version": "docusaurus-rename-version",
+    "format:source": "prettier --config ../.prettierrc --write\"{core/**/*.js, static/js/**/*.js}\"",
+    "format:markdown": "prettier --config ../.prettierrc --write\"{../docs/**/*.md, versioned_docs/**/*.md, blog/**/*.md}\"",
+    "prettier": "yarn format:source && yarn format:markdown",
+    "test": "yarn run build"
   },
   "devDependencies": {
-    "docusaurus": "^1.0.9"
+    "docusaurus": "^1.0.9",
+    "prettier": "1.12.1"
   }
 }
