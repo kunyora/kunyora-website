@@ -33,7 +33,7 @@ Please check the docusaurus documentation for an overview of the website structu
 7.  Test your changes with other browsers for compartibility.
 8.  `git add -A && git commit -m My commit message` (replacing `My commit message` with your own message)
 9.  `git push my-fork-name the-name-of-my-branch`
-10. Go to the `kunyora-website repo`, you shoudl see the recently pushed branch.
+10. Go to the `kunyora-website repo`, you should see the recently pushed branch.
 
 ## License
 
