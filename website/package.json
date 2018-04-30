@@ -7,8 +7,8 @@
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "format:source": "prettier --config ../.prettierrc --write\"{core/**/*.js, static/js/**/*.js}\"",
-    "format:markdown": "prettier --config ../.prettierrc --write\"{../docs/**/*.md, versioned_docs/**/*.md, blog/**/*.md}\"",
+    "format:source": "prettier --config ../.prettierrc --write \"{core/**/*.js, static/js/**/*.js}\"",
+    "format:markdown": "prettier --config ../.prettierrc --write \"{../docs/**/*.md, versioned_docs/**/*.md, blog/**/*.md}\"",
     "prettier": "yarn format:source && yarn format:markdown",
     "test": "yarn run build"
   },
