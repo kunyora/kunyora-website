@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to the Kunyora docs which is the same docs housing react-kunyora.
+Thank you for your interest in contributing to the Kunyora docs which is the same docs for react-kunyora.
 
 ## Code of Conduct
 
