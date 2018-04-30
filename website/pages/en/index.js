@@ -35,6 +35,9 @@ const HomeCallToAction = props => {
       <div className="section promoSection">
         <div className="promoRow">
           <div className="pluginRowBlock">
+            <Button href={docUrl("try_it_out.html", language)}>
+              TRY KUNYORA
+            </Button>
             <Button href={docUrl("getting_started.html", language)}>
               GET STARTED
             </Button>
@@ -82,6 +85,9 @@ class HomeSplash extends React.Component {
               <div className="section promoSection">
                 <div className="promoRow">
                   <div className="pluginRowBlock">
+                    <Button href={docUrl("try_it_out.html", language)}>
+                      TRY KUNYORA
+                    </Button>
                     <Button href={docUrl("getting_started.html", language)}>
                       GET STARTED
                     </Button>
