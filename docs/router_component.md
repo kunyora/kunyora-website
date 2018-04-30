@@ -3,10 +3,10 @@ id: router_component
 title: Router Component
 ---
 
-The Router component is one which helps in initializing a request handshake between 2 pages or screens. It is a low level api built using the common `render props` reactJs pattern. This low level component does not work on mobile i.e `react-native` or any other Javascript based mobile native library except hybrid based i.e `Cordova`. This component is quite useful when you are building a web app that requires a `screen` to download some contents before pushing the user to the next route. The `Router`component is conceptually used in this scenario to instantiate the download before the Push.
+The Router component is one which helps in initializing a request handshake between 2 pages or screens. It is a low level api built using the common `render prop` reactJs pattern. This low level component does not work on mobile i.e `react-native` or any other Javascript based mobile native library except hybrid based i.e `Cordova`. This component is quite useful when you are building a web app that requires a `screen` to download some contents before pushing the user to the next route. The `Router`component is conceptually used in this scenario to instantiate the download before the Push.
 
 Also, the push can be implemented irrespective of the routing library being used. with the `Router` component, one could specify that screens should download both the `Component` and fetch the `queries` which would be displayed on the next screen before actually performing the route.
-Therefore, in this tutorial, we would be building a very small application which would show the `Router` component in action. Let's swing into action to se how this is done.
+Therefore, in this tutorial, we would be building a very small application which would show the `Router` component in action. Let's swing into action to see how this is done.
 
 * [`Building a simple page navigator`](router_component.md#building-a-simple-page-navigator)
 * [`Setting up the routes`](router_component.md#setting-up-the-routes)
@@ -19,7 +19,7 @@ In this section, we would be building a very simple page navigator. Our page nav
 
 ## Setting up the routes
 
-In this section, we would be setting up the routes for our navigator based application. As stated earlier, we would be making use of `react-router v4` as our routing library. We would assume that you are quite familiar with `react-router` and therefore skip all the details in explaining the library itself. Please refer to the [react-router](reactRouter.com) site if you are not familiar with using the library.
+In this section, we would be setting up the routes for our navigator based application. As stated earlier, we would be making use of `react-router v4` as our routing library. We would assume that you are quite familiar with `react-router` and therefore skip all the details in explaining the library itself. Please refer to the [react-router](https://reacttraining.com) site if you are not familiar with using the library.
 
 ```javascript
 /**
@@ -44,7 +44,7 @@ const App = props => (
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById("root"));
 registerServiceWorker();
 ```
 
@@ -102,9 +102,9 @@ const Initiator = props => (
 export default Initiator;
 ```
 
-In the above, we supply a name for our route which is required. If you are code splitting from the route level, then make sure that the `Connector` and the `Router` both have the same name. The `loader` prop is used to prefetch that route before initial route, the `resource` prop is used to specify a list of queries to prefetch before routing the user to the next screen. The `onRequestRoute` prop should be used to specify a function which would be called when the contents have been downloaded. In our case, we use `react-router` to oute the user to the next screen.
+In the above code sample, we supply a name for our route which is required. If you are code splitting from the route level, then make sure that the `Connector` and the `Router` both have the same name. The `loader` prop is used to prefetch that route before initial route, the `resource` prop is used to specify a list of queries to prefetch before routing the user to the next screen. The `onRequestRoute` prop should be used to specify a function which would be called when the contents have been downloaded. In our case, we use `react-router` to route the user to the next screen.
 
-The parameter specified in the children props of the `Router` component should be used within it to carry out its functionalities. In this case, we pass the `push` parameter to the buttons `onClick` event.
+The parameter specified in the children prop of the `Router` component should be used within it to carry out its functionalities. In this case, we pass the `push` parameter to the buttons `onClick` event.
 
 ## Rendering Data
 
@@ -138,4 +138,4 @@ export default Notification;
 
 Ideally, we are suppose to code split at the route level within the `Notification` component using the `Connector` component. However, you can check up our series of tutorials for an example of how to achieve this purpose.
 
-Run your application and see the beauty in using the `react-kunyora`. Please check out the [Router Api reference](router_component_api_overview.md) for an overview of ythe component.
+Run your application and see the beauty in using the `react-kunyora`. Please check out the [Router Api reference](router_component_api_overview.md) for an overview of the component.

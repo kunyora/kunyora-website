@@ -3,7 +3,7 @@ id: router_component_api_overview
 title: Router Api Overview
 ---
 
-The `Router` component is a simple reactJs `render props` component, which you can use in prefetching some contents and a route before navigating to the actual route. This component is not compartible with mobile for now and should only be used on the web.
+The `Router` component is a simple reactJs `render prop` component, which you can use in prefetching some contents and a route before navigating to the actual route. This component is not compartible with mobile for now and should only be used on the web.
 
 # Props
 
@@ -12,7 +12,7 @@ The `Router` component is a simple reactJs `render props` component, which you c
 * [`resources`](router_component_api_overview.md#resources)
 * [`onRequestRoute`](router_component_api_overview.md#onrequestroute)
 
-* [`Parametrs passed to this.props.children`](router_component_api_overview.md#parameters-passed-to-thispropschildren)
+* [`Parameters passed to this.props.children`](router_component_api_overview.md#parameters-passed-to-thispropschildren)
 
 # Reference
 
@@ -20,7 +20,7 @@ The `Router` component is a simple reactJs `render props` component, which you c
 
 ### `name`
 
-specifies the unique name for your application. If you are code splitting your app on the `route` level, then make sure the name specified here is the same as the one specifed in the `Connector` component.
+specifies the unique name for your application. If you are code splitting your app at the `route` level, then make sure the name specified here is the same as the one specifed in the `Connector` component.
 
 | Type   | Required |
 | ------ | -------- |
@@ -46,7 +46,7 @@ This component is used to dynamically import the component. It returns a promise
 <Router
   resources={[
     {
-      operation: "YOUR_ACCESOR",
+      operation: "YOUR_OPERATION",
       config: { ...someConfig },
       fetchPolicy: "cache-and-network"
     }
@@ -56,12 +56,12 @@ This component is used to dynamically import the component. It returns a promise
 </Router>
 ```
 
-This prop can be use to specify an array of queries to prefetch before routing the user to the next screen.
+This prop is used to specify an array of queries to prefetch before routing the user to the next screen.
 
 **options**
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| operation | string | Yes | This is the accessor that is used to fetch the data. Please refer to the [Kunyora tutorial](kunyora_tutorial.md) for a brief of how this is formed |
+| operation | string | Yes | This is the operation that is used to fetch the data. Please refer to the [Introduction to operation](introduction_to_operation.md) section of the documentation for a brief of how this is formed |
 | config | Object | No | this is similar to the axios config supplied to its instance. This is sent with the request. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) docs |
 | fetchPolicy | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" ) | No (defaults to ("cache-first")) | specify the fetch type for the query |
 

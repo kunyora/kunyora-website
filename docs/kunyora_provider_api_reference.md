@@ -3,7 +3,7 @@ id: kunyora_provider_api_reference
 title: KunyoraProvider API Overview
 ---
 
-This component is a `top level component`. A `Top level component` is a component which typically wraps the whole of your application together with the essence of exposing some sort of functionalities to it. The `KunyoraProvider` component exposes 2 props; which we will examine in this section.
+This component is a `top level component`. A `Top level component` is a component which typically wraps your entire application or a huge amount of other components together with the essence of exposing some common functionalities to it. The `KunyoraProvider` component exposes 2 props; which we will examine in this section.
 
 # Props
 

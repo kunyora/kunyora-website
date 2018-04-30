@@ -3,9 +3,9 @@ id: kunyora_provider_component
 title: KunyoraProvider Component
 ---
 
-This is a top level container used by `react-kunyora` to connect the whole application to the `client` library `kunyora`. Its a very simple component which must wrap your whole application so that `react-kunyora` could pass the `client` and `store efficiently` to it.
+This is a top level container used by `react-kunyora` to connect the whole application to the `client` library `kunyora`. Its a very simple component which must wrap your whole application so that `react-kunyora` could pass the `client` and `store` to it.
 
-Lets examine a quick example of using `KunyoraProvider` in action
+Lets examine a quick example of using `KunyoraProvider` in action.
 
 ```javascript
 import KunyoraClient from "kunyora";
@@ -25,4 +25,4 @@ export default (App = props => (
 
 The above code just wraps the rest of our application within the `KunyoraProvider` top level component and passes the `client` and the `store` prop to it. The `client` prop is created from `KunyoraClient` and the `store` is exposed by the `client` itself.
 
-Please check the [Api reference](kunyora_provider_api_reference.md) for better insight into the `KunyoraProvider` component.
+Please check the [Api reference Docs](kunyora_provider_api_reference.md) for a  better insight into the `KunyoraProvider` component.

@@ -3,9 +3,9 @@ id: query_component_api_overview
 title: Query Api Overview
 ---
 
-The `Query` component is a simple reactJs `render props` element, which you can use in making typical `get query requests` to your restful api. This section of the documentation is divided into 2 sections, the `Props` used by the component and the `Parameters passed to this.props.children` of the component.
+The `Query` component is a simple reactJs `render prop` element, which you can use in making typical `get query requests` to your restful api. This section of the documentation is divided into 2 sections, the `Props` used by the component and the `Parameters passed to this.props.children` of the component.
 
-This component uses an `heuristic` approach to mapping queries made to the store. A query is mapped using its configuration.Please refer to the [router docs](router_component_api_overview.md) for more information on this.
+This component uses an `heuristic` approach in mapping queries made to the store. A query is mapped using its configuration. Please refer to the [router docs](router_component_api_overview.md) for more information on this.
 
 # Props
 
@@ -35,7 +35,7 @@ determines if a query should be skipped or not.
 
 ### `operation`
 
-specifies the accessor that should be used to query your api. Accessors are formed from camel-casing `get` and the `name` supplied in the `nouns` of a query. Please refer to the [Indepth tutorial](kunyora_tutorial.md) section of the docs to see how accessors are generally formed.
+specifies the operation that should be used to query your api. Operations are formed from camel-casing `get` and the `name` supplied in the `nouns` of a query. Please refer to the [Introduction to operation](introduction_to_operation.md) section of the docs to see how operations are generally formed.
 
 | Type   | Required |
 | ------ | -------- |
@@ -70,7 +70,7 @@ specifies a component which should be used to indicate that a query has failed
 </Query>
 ```
 
-specifies an object that contains the `fetchPolicy` and the `config` properties which is used to specify the fetch type for the query and additional parameters and configuration to send with the query respectively.
+specifies an object that contains the `fetchPolicy` and the `config` properties which is used to specify the fetch type for the query and additional configuration to send with the query respectively.
 
 | Type | Required |
 | ---- | -------- |
@@ -82,7 +82,7 @@ specifies an object that contains the `fetchPolicy` and the `config` properties 
 | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" | No |
 
 **options.config**
-The configuration specified here is similar to that passed to the client instance. Please refer to the axios documentation for a full insight into the keys exposed by this property [axios](https://github.com/axios/axios/blob/master/README.md). This property is however not `required` when instantiating a request.
+The configuration specified here is similar to that passed to the client instance. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the keys exposed by this property. This property is however not `required` when instantiating a request.
 
 ## Parameters passed to this.props.children
 
@@ -114,7 +114,7 @@ fetchMore({
 });
 ```
 
-This is a function that cen be used to fetch more queries from the Api. This function is ideal when one wants to fetch more contents like for instance in a list that has a fetch more functionality. `updateQuery` must be specified when `fetchMore` is called and a new `Object` must be returned which would be used to update the state internally. `updateQuery` can use the `previousResult` and the `fetchMoreResult` parameters to form a new Object which would update the state.
+This is a function that should be used to fetch more queries from the Api. This function is ideal when one wants to fetch more contents like for instance in a list that has a fetch more functionality. `updateQuery` must be specified when `fetchMore` is called and a new `Object` must be returned which would be used to update the state internally. `updateQuery` can use the `previousResult` and the `fetchMoreResult` parameters to form a new Object which would update the state.
 
 `config` is similar to that used by `axios`, so please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for an insight into what parameters can be supplied.
 
@@ -123,7 +123,7 @@ This is a function that cen be used to fetch more queries from the Api. This fun
 | Name            | Type | Description                                           |
 | --------------- | ---- | ----------------------------------------------------- |
 | previousResult  | any  | This contains the previous data returned by the query |
-| fetchMoreResult | any  | This contains the new result gotten by the api        |
+| fetchMoreResult | any  | This contains the new response gotten by the api        |
 
 ### `refetchQuery`
 

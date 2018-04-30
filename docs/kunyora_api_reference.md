@@ -4,7 +4,7 @@ title: API Reference (Kunyora)
 sidebar_label: API Reference
 ---
 
-This section of the documentation covers the the Api reference of `Kunyora`. It is divided into 3 sections, the `configuration` passed to the client, `exposed methods` by the client and the `configuration` passed to the methods which interact with the api.
+This section of the documentation covers the Api reference of `Kunyora`. It is divided into 3 sections, the `configuration` passed to the client, `exposed methods` by the client and the `configuration` passed to the methods which interact with the api.
 
 ## Client Configration(Options)
 
@@ -15,7 +15,7 @@ This section of the documentation covers the the Api reference of `Kunyora`. It 
 
 ## Methods
 
-* [`Request or Accessor methods`](kunyora_api_reference.md#request-or-accessor-methods)
+* [`operations`](kunyora_api_reference.md#operations)
 * [`middleware`](kunyora_api_reference.md#middleware)
 * [`store`](kunyora_api_reference.md#store)
 
@@ -44,6 +44,8 @@ This should contain your restful endpoint url
 ```javascript
 let client = kunyoraClient({ nouns: ["ENTER_YOUR_PATH"] });
 
+//OR 
+
 let client = kunyoraClient({
   nouns: [{ path: "ENTER_YOUR_PATH", name: "ENTER_AN_OPTIONAL_NAME" }]
 });
@@ -59,93 +61,95 @@ specifies an array of routes or paths exposed by the restful api
 | Name | Type | Required | Description |
 | ---- | ------ | ------- | ---------- |
 | path | string | Yes | contains the route to access
-| name | string | No | contains a name that can be camel-cased with the accessors to access a specific route e.g we could have getName |
+| name | string | No | contains a name that can be camel-cased with a default operation to access a specific route e.g we could have getName. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations|
 
 ### `thenables`
 
 ```javascript
 let client = kunyoraClient({
   thenables: {
-    ...accessor_methods,
+    ...other_operations,
     get: function(response, name) {
-      /*do something*/
+      /*do something. Mostly used for general purposes*/
     },
-    ["custom_accessor_methods"]: function(response) {
-      /* do something */
+    ["ENTER_THE_OPERATION_TO_HANDLE_HERE"]: function(response) {
+      /* do something. Mostly used for specific purposes */
     }
   }
 });
 ```
 
-specifies an object that you should use to handle success responses from your api. This uses a key-based mapping with the accessors to handle the success response. If this property is not passed, then kunyora defaults to attaching a promise to the accessor method itself
+specifies an object that you should use to handle success responses from your api. This uses a key-based mapping with the operations to handle the success response. If this property is not passed, then kunyora defaults to returning a promise when the operation is called.
 
 | Type   | Required |
 | ------ | -------- |
 | Object | No       |
 
-**Accessor.methods you can use with thenables as keys**
+**Operations you can use with thenables as keys**
 
 | Name             | Type     | Required | Description                                                                                                                                                                                                                                                                    |
 | ---------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| get              | function | No       | can be used as a key to handle all get requests which do not have their accessor specified in the thenables                                                                                                                                                                    |
-| create           | function | No       | can be used as a key to handle all posts requests which do not have their accessor specified in the thenables                                                                                                                                                                  |
-| update           | function | No       | can be used as a key to handle all Put requests which do not have their accessor specified in the thenables                                                                                                                                                                    |
-| delete           | function | No       | can be used as a key to handle all delete requests which do not have their accessor specified in the thenables                                                                                                                                                                 |
-| `your_accessors` | function | No       | this is the accessor that `kunyoraClient` checks to handle any incoming success response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
+| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                    |
+| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
+| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                    |
+| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                                 |
+| partUpdate | function | No | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables |
+| `your_operation` | function | No       | this is a specific operation that `kunyoraClient` checks to handle any incoming success response. This is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations |
 
-**parameters passed to Accessor.methods supplied as keys to thenables**
+**parameters passed to the operations supplied as keys to thenables**
 
-| Name     | Type   | Accessor Methods                                       | desciption                                                                                                             |
+| Name     | Type   | operations                                       | desciption                                                                                                             |
 | -------- | ------ | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| response | Object | get, delete, create, update, `custom accessor methods` | This is a response object containing details used in making the resquest and the actual success response from your api |
+| response | Object | get, delete, create, update, partUpdate, `your operation` | This is a response object containing details used in making the resquest and the actual success response from your api |
 
 ### `catchables`
 
 ```javascript
 let client = kunyoraClient({
   catchables: {
-    ...accessor_methods,
+    ...other_operations,
     get: function(error, name) {
-      /*do something*/
+      /*do something. Mostly used for general purposes*/
     },
-    ["custom_accessor_methods"]: function(error) {
-      /* do something */
+    ["ENTER_THE_OPERATION_TO_HANDLE_HERE"]: function(error) {
+      /* do something. Mostly used for specific purposes */
     }
   }
 });
 ```
 
-specifies an object that you should use to handle error responses from your api. This uses a key-based mapping with the accessors to handle the error response. If this property is not passed, then kunyora defaults to attaching a promise to the accessor method itself
+specifies an object that you should use to handle error responses from your api. This uses a key-based mapping with the operations to handle the error response. If this property is not passed, then kunyora defaults to returning a promise.
 
 | Type   | Required |
 | ------ | -------- |
 | Object | No       |
 
-**Accessor.methods you can use with catchables as keys**
+**operations you can use with catchables as keys**
 
 | Name             | Type     | Required | Description                                                                                                                                                                                                                                                                  |
 | ---------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| get              | function | No       | can be used as a key to handle all get requests which do not have their accessor specified in the thenables                                                                                                                                                                  |
-| create           | function | No       | can be used as a key to handle all posts requests which do not have their accessor specified in the thenables                                                                                                                                                                |
-| update           | function | No       | can be used as a key to handle all Put requests which do not have their accessor specified in the thenables                                                                                                                                                                  |
-| delete           | function | No       | can be used as a key to handle all delete requests which do not have their accessor specified in the thenables                                                                                                                                                               |
-| `your_accessors` | function | No       | this is the accessor that `kunyoraClient` checks to handle any incoming error response. This is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified |
+| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
+| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                |
+| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
+| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                               |
+| partUpdate | function | No | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables |
+| `your_operation` | function | No       | this is the operation that `kunyoraClient` checks to handle any incoming error response. This is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations |
 
-**parameters passed to Accessor.methods supplied as keys to catchables**
+**parameters passed to the operations supplied as keys to catchables**
 
-| Name  | Type   | Accessor Methods                                       | desciption                                                                                                        |
+| Name  | Type   | Operations                                       | desciption                                                                                                        |
 | ----- | ------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| error | Object | get, delete, create, update, `custom accessor methods` | This is a error object containing details used in making the resquest and the actual error response from your api |
+| error | Object | get, delete, create, partUpdate, update, `your operation` | This is an error object containing details used in making the resquest and the actual error response from your api |
 
 ## Methods
 
-### `Request or Accessor Methods`
+### `Operations`
 
 ```javascript
-client["YOUR_ACCESSOR_METHODS"]({ ...axios_instance_config });
+client["YOUR_OPERATION"]({ ...axios_instance_config });
 ```
 
-used to communicate with your restful backend. The accessor method is formed from camel-casing one of the four default accessors with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Please check out the [InDepth Tutorial](kunyora_tutorial.md) section of the documentation for a practical example of how this is done.
+used to communicate with your restful backend. The operation is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Please check out the [InDepth Tutorial](kunyora_tutorial.md) section of the documentation for a practical example on how this is done.
 
 The `axios instance config` is similar to that provided by the axios documentation.
 
@@ -157,7 +161,7 @@ client.middleware({
     //return headers
   },
   useAfterResponse: function(response) {
-    // do something with all the response
+    // do something with any response gotten
   }
 });
 ```
@@ -170,13 +174,13 @@ specifies two `optional` callbacks that would be used by the application if pres
 |useBeforeRequest | function | No | Object | This function is called before a request is sent. You must return the headers here so the the client instance could make use of it. This function is passed the header object as a parameter |
 |useAfterResponse | function | No | Object | This function is called after a response is gotten but before it is handled by any client side code if present. This function is passed the response object as a parameter |
 
-### `Request or Accessor Methods`
+### `Store`
 
 ```javascript
 client.store;
 ```
 
-For now, we have not found any usage for this module yet. However, it is currently used by our client-side view libraries like ReactJs to handle the state of our application. It also has a lot of potentials to be used outside of this. Please get across to us incase you feel this should be made public for use. However, for now we would really not go deep into the API's exposed by this module , but we would however update the docs as time goes on.
+For now, we have not found any external usage for this module yet. However, it is currently used by our client-side view libraries like ReactJs to handle the state of our application. It also has a lot of potentials to be used outside of this. Please get across to us incase you feel this should be made public for use. However, for now we would really not go deep into the API's exposed by this module , but we would however update the docs as time goes on.
 
 | Type   | Required |
 | ------ | -------- |
@@ -189,7 +193,7 @@ For now, we have not found any usage for this module yet. However, it is current
 ```javascript
 let client = kunyoraClient({ ...config });
 
-client["YOUR_ACCESSOR"]({ params: {}, data: {}, ...otherAxiosConfigs });
+client["YOUR_OPERATION"]({ params: {}, data: {}, ...otherAxiosConfigs });
 ```
 
 The instance config is very similar to that provided by axios. Please refer to the [axios documentation](https://github.com/axios/axios/blob/master/README.md)

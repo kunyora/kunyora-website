@@ -181,10 +181,8 @@ class Features extends React.PureComponent {
         <Container>
           <FeatureTitle title="Manage Request Prefetch before Route Push" />
           <small style={{ fontSize: 15 }}>
-            You can manage the prefetch of request before route push to the next
-            visible route to your users. In essence, Kunyora helps you store the
-            response of a requested route thereby reducing the need to send
-            queries when a user gets to a visible route.
+            You can manage the prefetch of requests before a page transition occurs. In essence, Kunyora helps you store the
+            response of a requested route even before a page transition occurs.
           </small>
           <MarkdownBlock>
             {`\`\`\` javascript

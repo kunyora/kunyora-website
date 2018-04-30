@@ -3,7 +3,7 @@ id: connector_component_api_overview
 title: Connector Api Overview
 ---
 
-The Connector component is a component which you can use to connect your `views` to a progress route. This component could be used to code split routes or either the components within a view if the `loader` props is supplied and it could conceptually be used to segment UI and just pass the route progress of a content download to the requesting `view`. This component is not compartible with mobile for now and should only be used on the web.
+The Connector component is a component which you can use to connect your `views` to a progress route. This component is not compartible with mobile for now and should only be used on the web.
 
 # Props
 
@@ -59,7 +59,7 @@ specifies a component which should be used to indicate that the dynamic componen
 
 ### `delay`
 
-specifies the amount of milliseconds it should take for a loading component to be rendered initially when the component is being downloaded. This solves of issue of a screen flicker on a fast network.
+specifies the amount of milliseconds it should take for a loading component to be rendered initially when the component is being downloaded. This solves the issue of a screen flicker on a fast network.
 
 | Type   | Required |
 | ------ | -------- |
@@ -88,5 +88,5 @@ Only two parameters are passed to the children prop of the `Connector` component
 
 | Name          | Type          | Description                                                                      |
 | ------------- | ------------- | -------------------------------------------------------------------------------- |
-| Component     | React.element | This is the dynamically loaded component                                         |
+| Component     | React.Component | This is the dynamically loaded component                                         |
 | progressCount | number        | This is a progress count from the handshake initialized from the preceeding page |

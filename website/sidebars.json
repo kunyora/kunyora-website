@@ -1,7 +1,16 @@
 {
   "docs": {
-    "The Basics": ["getting_started", "quick_tutorial", "motivation", "vision"],
-    "Kunyora": ["kunyora_tutorial", "kunyora_api_reference"],
+    "The Basics": [
+      "getting_started",
+      "quick_tutorial",
+      "introduction_to_operations",
+      "motivation",
+      "vision"
+    ],
+    "Kunyora": [
+      "kunyora_tutorial",
+      "kunyora_api_reference"
+    ],
     "react-kunyora": [
       "kunyora_provider_component",
       "kunyora_provider_api_reference",
@@ -14,7 +23,13 @@
       "connector_component",
       "connector_component_api_overview"
     ],
-    "Contributing": ["how_to_contribute", "expectations_from_maintainers"],
-    "What's Next": ["community_tutorials", "todos"]
+    "Contributing": [
+      "how_to_contribute",
+      "expectations_from_maintainers"
+    ],
+    "What's Next": [
+      "community_tutorials",
+      "todos"
+    ]
   }
 }

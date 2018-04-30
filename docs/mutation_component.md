@@ -3,7 +3,7 @@ id: mutation_component
 title: Mutation Component
 ---
 
-A Mutation component is a low level component which you would typically use in making `post, update, put or delete` request which all cause side effects in our databases. This component is one which is exported from `react-kunyora`. It uses the `render props` pattern of reactJs to provide your UI with functionalities which allow it to perform this mutations.
+A Mutation component is a low level component which you would typically use in making `post, put, patch or delete` request which all cause side effects to your databases. This component is one which is exported from `react-kunyora`. It uses the `render prop` pattern of reactJs to provide your UI with functionalities which allow it to perform this mutations.+
 
 In this section, we would be creating a very `simple todo list application`
 
@@ -44,7 +44,7 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById("root"));
 registerServiceWorker();
 ```
 
@@ -122,14 +122,14 @@ The code above creates a todo by sending a `post` request to the database which 
 
 The `Mutation` component is used in our example above to create the `todo` since it sends a `post` request which creates the text entered by our user. Let's go ahead to explain the props we used in the `Mutation`component to achieve our purpose.
 
-* **operation** : This props is used to specify the command to run. Typically in a mutation request, it is formed by camel-casing `create` which is mapped to `post`, `update` mapped to `put`, `partUpdate` and `delete` with the `name` or `path` attribute supplied by the user when creating the `client` and in our case, this is `todo`, hence the operation `createTodo`. For a full understanding of how `accessors` are formed, please refer to the [Indepth tutorial](query_component.md) section of the application for a more detailed explanation of this.
+* **operation** : This prop is used to specify the command to run. Typically in a mutation request, operations are formed by camel-casing `create` which is mapped to `post`, `update` mapped to `put`, `partUpdate` which is mapped to `patch` and `delete` with the `name` or `path` attribute supplied by the user when creating the `client` and in our case, this is `todo`, hence the operation `createTodo`. For a full understanding of how `operations` are formed, please refer to the [Introduction to operation](introduction_to_operation.md) section of the application for a more detailed explanation.
 
-* **options** : This props is used to specify some custom configs which would be used alongside our mutation request. we can use it to specify a `config` which a mutation would use initially when making a request or change with the API and the `refetchQueries` which we use to refetch some set of queries after a mutation must have been applied successfully. In our example above, we specify `refetchQueries` whichs we use to automatically get the list of all the `todos` after creating one. This functionality proves the power in declarativeness of data. Please refer to the [Mutation Api reference](mutation_component_api_overview.md) for a full overview of what is achievable with this prop.
+* **options** : This prop is used to specify some custom configs which would be used alongside our mutation request. we can use it to specify a `config` which a mutation would use initially when making a request and the `refetchQueries` which we use to refetch some set of queries after a mutation must have been applied successfully. In our example above, we specify `refetchQueries` which we use to automatically get the list of all the `todos` after creating one. This functionality proves the power in declarativeness of data. Please refer to the [Mutation Api reference](mutation_component_api_overview.md) for a full overview of what is achievable with this prop.
 
 Now, lets go ahead to explain the parameters passed to our `this.props.children` of the `Mutation` component.
 
 * **mutationState** : This parameter contains the state of our mutation request which could either be in-flight or resolved. The `loading` property is the only property contained in this object. Ideally, it allows us keep a reference to the current loading condition of our `request` while still managing everything declaratively. The `loading` state can only be `true` or `false` but cannot be both at the same time.
 
-* **mutate**: This parameter is a function that we need to call to actually carry out the mutation on the database. It accepts a single object is the `config` that should be sent with the request that we make. This `config` parameter it accepts is similar to that used by [axios](https://github.com/axios/axios/blob/master/README.md). In our example above, we use this function to create a `todo` in a function named `createTodo`.
+* **mutate**: This parameter is a function that we need to call to actually carry out the mutation on the database. It accepts a single object which is the `config` that should be sent with the request that we make. This `config` parameter it accepts is similar to that used by [axios](https://github.com/axios/axios/blob/master/README.md). In our example above, we use this function to create a `todo` in a function named `createTodo`.
 
-The rest of our application is self explanatory since its just basic `reactJs`. Please refer to the [Mutation Api Reference](mutation_component_api_overview.md) for more insights intow what is achievable by the `Mutation` component.
+The rest of our application is self explanatory since its just basic `reactJs`. Please refer to the [Mutation Api Reference](mutation_component_api_overview.md) for more insights into what is achievable by the `Mutation` component.
