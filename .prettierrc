@@ -1,5 +1,5 @@
 {
-  "overrides: [
+  "overrides": [
     {
       "files" : ".prettierrc",
       "options" : {
@@ -7,8 +7,8 @@
       }
     },
     {
-      "files: : ["website/core/**/*.js", "website/static/js/**/*.js"],
-      "options" " {
+      "files": ["website/core/**/*.js", "website/static/js/**/*.js"],
+      "options":  {
         "arrowParens" : "avoid",
         "bracketSpacing" : false,
         "jsxBracketSameLine" : true,
