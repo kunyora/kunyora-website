@@ -32,47 +32,46 @@ Let's develop the component in our application that would be used in collecting 
 /**
  * Index.js
  **/
-import React from "react";
-import { render } from "react-dom";
-import registerServiceWorker from "./registerServiceWorker";
-import { Connector } from "react-kunyora";
+import React from 'react';
+import {render} from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
+import {Connector} from 'react-kunyora';
 
 export default class App extends React.PureComponent {
   state = {
     isInvoiceVisible: false,
-    name: "",
-    paying: 0
+    name: '',
+    paying: 0,
   };
 
   render() {
-    let { name, paying, isInvoiceVisible } = this.state;
+    let {name, paying, isInvoiceVisible} = this.state;
     return (
       <center>
         <input
           type="text"
           value={name}
-          onChange={evt => this.setState({ name: evt.target.value })}
+          onChange={(evt) => this.setState({name: evt.target.value})}
         />
         <br />
         <input
           type="number"
           value={paying}
-          onChange={evt => this.setState({ paying: evt.target.value })}
+          onChange={(evt) => this.setState({paying: evt.target.value})}
         />
         <br />
-        <button onClick={() => this.setState({ isInvoiceVisible: true })}>
+        <button onClick={() => this.setState({isInvoiceVisible: true})}>
           Generate Report
         </button>
         <br />
-        <p style={{ marginTop: 20 }}>
+        <p style={{marginTop: 20}}>
           {isInvoiceVisible && (
             <Connector
               name="invoice"
               loadingComponent={<span>Generating</span>}
               errorComponent={null}
-              loader={() => import("./Invoice")}
-            >
-              {Invoice => <Invoice {...this.state} />}
+              loader={() => import('./Invoice')}>
+              {(Invoice) => <Invoice {...this.state} />}
             </Connector>
           )}
         </p>
@@ -81,7 +80,7 @@ export default class App extends React.PureComponent {
   }
 }
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
@@ -93,9 +92,9 @@ Lets go ahead to finish the creation of our invoice by creating the `Report` com
 /**
  * Invoice.js
  */
-import React from "react";
+import React from 'react';
 
-const Invoice = props => {
+const Invoice = (props) => {
   let balance = 10000 - Number(props.paying);
   return (
     <div>

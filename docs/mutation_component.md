@@ -23,17 +23,17 @@ Here, we would be creating the client for our application. We would assume that 
 /**
  * Index.js
  */
-import React from "react";
-import { render } from "react-dom";
-import KunyoraClient from "kunyora";
-import { KunyoraProvider } from "react-kunyora";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import {render} from 'react-dom';
+import KunyoraClient from 'kunyora';
+import {KunyoraProvider} from 'react-kunyora';
+import registerServiceWorker from './registerServiceWorker';
 
-import TodoList from "./TodoList";
+import TodoList from './TodoList';
 
 const client = KunyoraClient({
-  baseURL: "https://kunyora.herokuapp.com/",
-  nouns: [{ path: "todo", name: "todo" }]
+  baseURL: 'https://kunyora.herokuapp.com/',
+  nouns: [{path: 'todo', name: 'todo'}],
 });
 
 const App = () => (
@@ -44,52 +44,50 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
-The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
-Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/todo` routes. Then we go ahead to connect our whole application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
+The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api. Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/todo` routes. Then we go ahead to connect our whole application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
 
 ### **Sending a Post Request to add a Note**
 
 Lets go ahead to create the UI for our todo list application. The UI would basically allow users to add a todo as well as get the list of todos that has been added by the user. We are not going to complicate issues, so the UI would be as simple as possible, please feel free to add css to beautify the UI.
 
 ```javascript
-import React from "react";
-import { Query, Mutation } from "react-kunyora";
+import React from 'react';
+import {Query, Mutation} from 'react-kunyora';
 
 class List extends React.PureComponent {
   state = {
-    todo: ""
+    todo: '',
   };
 
   createTodo = () => {
     this.props.mutate({
-      data: { content: this.state.todo }
+      data: {content: this.state.todo},
     });
   };
 
   render() {
-    let { todo } = this.state,
-      { loading } = this.props;
+    let {todo} = this.state,
+      {loading} = this.props;
     return (
       <div>
         <textarea
-          type={"text"}
+          type={'text'}
           placeholder="enter a todo"
           value={todo}
-          onChange={ev => this.setState({ todo: ev.target.value })}
+          onChange={(ev) => this.setState({todo: ev.target.value})}
         />
-        <span>{loading ? "Adding...." : "Added"}</span>
+        <span>{loading ? 'Adding....' : 'Added'}</span>
         <button onClick={this.createTodo}>Create Todo</button> <br />
         <b> List of Added Todos </b>
         <Query
           operation="getTodo"
           renderLoading={<span> ...Loading </span>}
-          renderError={<span> Error occurred while loading Todo </span>}
-        >
-          {todo => {
+          renderError={<span> Error occurred while loading Todo </span>}>
+          {(todo) => {
             let component =
               todo.data.length === 0 ? (
                 <p> No Todo Yet </p>
@@ -104,11 +102,10 @@ class List extends React.PureComponent {
   }
 }
 
-const TodoList = props => (
+const TodoList = (props) => (
   <Mutation
     operation="createTodo"
-    options={{ refetchQueries: [{ operation: "getTodo" }] }}
-  >
+    options={{refetchQueries: [{operation: 'getTodo'}]}}>
     {(mutationState, mutate) => (
       <List mutate={mutate} loading={mutationState.loading} />
     )}

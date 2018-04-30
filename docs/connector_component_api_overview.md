@@ -22,16 +22,13 @@ The Connector component is a component which you can use to connect your `views`
 
 ### `name`
 
-specifies the unique name for your application.
-| Type | Required |
-| --- | --- |
-| string | Yes |
+specifies the unique name for your application. | Type | Required | | --- | --- | | string | Yes |
 
 ### `loader`
 
 ```javascript
-<Connector loader={() => import("./COMPONENT_TO_DYNAMICALLY_IMPORT")}>
-  {Component => <Component />}
+<Connector loader={() => import('./COMPONENT_TO_DYNAMICALLY_IMPORT')}>
+  {(Component) => <Component />}
 </Connector>
 ```
 
@@ -76,9 +73,9 @@ specifies the time it would take to forcefully stop downloading the component on
 # Parameters passed to this.props.children
 
 ```javascript
-<Connector name="invitation" loader={() => import("./Invitation")}>
-  {(Component, { progressCount }) => {
-    let _props = { progressCount };
+<Connector name="invitation" loader={() => import('./Invitation')}>
+  {(Component, {progressCount}) => {
+    let _props = {progressCount};
     return <Component {..._props} />;
   }}
 </Connector>
@@ -86,7 +83,7 @@ specifies the time it would take to forcefully stop downloading the component on
 
 Only two parameters are passed to the children prop of the `Connector` component. The first is the dynamically loaded `Component` while the second is an Object of the `progresssCount`.
 
-| Name          | Type          | Description                                                                      |
-| ------------- | ------------- | -------------------------------------------------------------------------------- |
+| Name          | Type            | Description                                                                      |
+| ------------- | --------------- | -------------------------------------------------------------------------------- |
 | Component     | React.Component | This is the dynamically loaded component                                         |
-| progressCount | number        | This is a progress count from the handshake initialized from the preceeding page |
+| progressCount | number          | This is a progress count from the handshake initialized from the preceeding page |

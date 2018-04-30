@@ -23,17 +23,17 @@ Let's go ahead to create the client for our application. We would assume that yo
 /**
  * Index.js
  */
-import React from "react";
-import { render } from "react-dom";
-import KunyoraClient from "kunyora";
-import { KunyoraProvider } from "react-kunyora";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import {render} from 'react-dom';
+import KunyoraClient from 'kunyora';
+import {KunyoraProvider} from 'react-kunyora';
+import registerServiceWorker from './registerServiceWorker';
 
-import NotificationList from "./NotificationList";
+import NotificationList from './NotificationList';
 
 const client = KunyoraClient({
-  baseURL: "https://kunyora.herokuapp.com/",
-  nouns: [{ path: "notification", name: "notification" }]
+  baseURL: 'https://kunyora.herokuapp.com/',
+  nouns: [{path: 'notification', name: 'notification'}],
 });
 
 const App = () => (
@@ -44,12 +44,11 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
-The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api.
-Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to connect our entire application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
+The `client` above is created using just the `baseURL` and the `nouns` of the `config`. When using a view layer like `reactJs`, there is no need to specify the `thenables` and `catchables` properties in your config as `react-kunyora` automatically handles that for you internally and just feeds your UI with the result sent by the restful Api. Also we created a test url for this application on heroku which we specified in our `baseURL` property. We would also be connecting to the `/notification` routes. Then we go ahead to connect our entire application to a top level [KunyoraProvider](kunyora_provider_component.md) component while passing in the `client` instance and the `store` as props.
 
 ### **Connecting to our data using the Query component**
 
@@ -60,16 +59,15 @@ Lets connect our UI to the data from the store using a query component. We would
  * NotificationList.js
  */
 
-import React from "react";
-import { Query } from "react-kunyora";
+import React from 'react';
+import {Query} from 'react-kunyora';
 
-export default (NotificationList = props => (
+export default (NotificationList = (props) => (
   <Query
     operation="getNotification"
     renderError={<p>An error just occurred</p>}
     renderLoading={<p> Loading... </p>}
-    options={{ fetchPolicy: "network-only" }}
-  >
+    options={{fetchPolicy: 'network-only'}}>
     {(notifications, fetchMore, refetchQuery) => [
       <div key={0}>
         {notifications.data.map((notification, i) => (
@@ -78,7 +76,7 @@ export default (NotificationList = props => (
       </div>,
       <button key={1} onClick={() => refetchQuery()}>
         Refresh List
-      </button>
+      </button>,
     ]}
   </Query>
 ));

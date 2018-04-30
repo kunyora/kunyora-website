@@ -52,49 +52,46 @@ Finally, Lets see how to integrate Kunyora with our client side Javascript code.
  */
 
 //you can use  your custom url if you wrote the above code yourself
-window.onload = function () {
-  var calculatorBtn = document.getElementById("calculateBtn"),
-    name = document.getElementById("name"),
-    num1 = document.getElementById("num1"),
-    num2 = document.getElementById("num2"),
-    status = document.getElementById("status"),
-    result = document.getElementById("result"),
-    num2 = document.getElementById("num2"),
-    verifyUser = document.getElementById("verifyUser"),
+window.onload = function() {
+  var calculatorBtn = document.getElementById('calculateBtn'),
+    name = document.getElementById('name'),
+    num1 = document.getElementById('num1'),
+    num2 = document.getElementById('num2'),
+    status = document.getElementById('status'),
+    result = document.getElementById('result'),
+    num2 = document.getElementById('num2'),
+    verifyUser = document.getElementById('verifyUser'),
     client = window.KunyoraClient({
-      baseURL: "https://kunyora.herokuapp.com/",
-      nouns: [
-        { path: "user", name: "user" },
-        { path: "compute", name: "compute" }
-      ],
+      baseURL: 'https://kunyora.herokuapp.com/',
+      nouns: [{path: 'user', name: 'user'}, {path: 'compute', name: 'compute'}],
       thenables: {
-        createUser: function (response) {
-          status.innerHTML = "Verified";
+        createUser: function(response) {
+          status.innerHTML = 'Verified';
         },
-        getCompute: function (response) {
+        getCompute: function(response) {
           result.innerHTML = response.data.result;
-        }
+        },
       },
       catchables: {
-        createUser: function (error) {
-          status.innerHTML = "Could not verify user";
+        createUser: function(error) {
+          status.innerHTML = 'Could not verify user';
         },
-        getCompute: function (response) {
-          result.innerHTML = "Could not make calculations";
-        }
-      }
+        getCompute: function(response) {
+          result.innerHTML = 'Could not make calculations';
+        },
+      },
     });
 
-  verifyUser.onclick = function () {
-    status.innerHTML = "Verifying...";
-    client.createUser({ data: { name: name.value } });
+  verifyUser.onclick = function() {
+    status.innerHTML = 'Verifying...';
+    client.createUser({data: {name: name.value}});
   };
 
-  calculatorBtn.onclick = function () {
+  calculatorBtn.onclick = function() {
     var _num1 = num1.value,
       _num2 = num2.value;
-    result.innerHTML = "...Calculating";
-    client.getCompute({ params: { num1: _num1, num2: _num2 } });
+    result.innerHTML = '...Calculating';
+    client.getCompute({params: {num1: _num1, num2: _num2}});
   };
 };
 ```
@@ -118,7 +115,7 @@ The client instance exposes various operations that can then be used to interact
 Let's assume you want to build an application that requires you to send the `jwt` or an `appId` as an header token. You would mostly want to send this on every request, so the user can be authenticated before a mutation (i.e post, create, update) is performed on the database. `kunyora` allows you to carry this out using our custom `middleware` exposed by the client instance. Check out this example code.
 
 ```javascript
-let client = KunyoraClient({ ...configs });
+let client = KunyoraClient({...configs});
 
 client.middleware({
   useBeforeRequest: function(header) {
@@ -126,13 +123,13 @@ client.middleware({
       ...header,
       common: {
         ...header.common,
-        jwt: "YOUR_JWT_STRING"
-      }
+        jwt: 'YOUR_JWT_STRING',
+      },
     };
   },
   useAfterResponse: function(response) {
-    console.log("Hey the response object gotten is ", response);
-  }
+    console.log('Hey the response object gotten is ', response);
+  },
 });
 ```
 

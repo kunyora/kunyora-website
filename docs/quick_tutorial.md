@@ -15,17 +15,16 @@ This tutorial would be focused on its integration with ReactJs which is the only
 
 Great, now we would assume that you have successfully installed the client library using npm or yarn. Let's go ahead to initialize our client based code.
 
-
 ```javascript
 /**
  * Index.js
  */
 
-import KunyoraClient from "kunyora";
+import KunyoraClient from 'kunyora';
 
 const client = KunyoraClient({
-  baseURL: "https://kunyora.herokuapp.com/",
-  nouns: [{ path: "admin/greeting", name: "greeting" }]
+  baseURL: 'https://kunyora.herokuapp.com/',
+  nouns: [{path: 'admin/greeting', name: 'greeting'}],
 });
 ```
 
@@ -37,12 +36,12 @@ In the `Index.js` file, we import `KunyoraClient` from `kunyora` and add `baseUR
 /**
  * Index.js
  */
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import {render} from 'react-dom';
 
-import { KunyoraProvider } from "react-kunyora";
-import HelloKunyora from "./HelloKunyora";
-import registerServiceWorker from "./registerServiceWorker";
+import {KunyoraProvider} from 'react-kunyora';
+import HelloKunyora from './HelloKunyora';
+import registerServiceWorker from './registerServiceWorker';
 
 const App = () => (
   <KunyoraProvider client={client} store={client.store}>
@@ -52,7 +51,7 @@ const App = () => (
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
@@ -67,10 +66,10 @@ The above code sample advances further and connects the client to React. To do t
  * HelloKunyora.js
  */
 
-import React from "react";
-import { Query } from "react-kunyora";
+import React from 'react';
+import {Query} from 'react-kunyora';
 
-const HelloKunyora = props => (
+const HelloKunyora = (props) => (
   <Query operation="getGreeting">
     {(queryResult, fetchMore, refetchQuery) => <div>{queryResult.data}</div>}
   </Query>
@@ -85,5 +84,4 @@ First, we needed to pass an `operation` prop to the component. The `operation` p
 
 In response to the request made, `react-kunyora` passes `queryResult, fetchMore, and refetchQuery` to the `Query` component's children. `queryResult` is an object containing `error, data, loading, isInitialDataSet` state keys. `fetchMore and refetchQuery` are typically used in fetching more results and refetching a query respectively. Please refer to the [Query](query_component.md) docs for a more detailed explanation.
 
-
-Congrats, you just succeeded in creating your first react-kunyora and kunyora application. You should be excited by now by the amount of declarative code we wrote to get this to work efficiently. Its time we get you into the deep bindings of [how operations are formed and used](introduction_to_operations.md). It's going to be fun practicing.  
+Congrats, you just succeeded in creating your first react-kunyora and kunyora application. You should be excited by now by the amount of declarative code we wrote to get this to work efficiently. Its time we get you into the deep bindings of [how operations are formed and used](introduction_to_operations.md). It's going to be fun practicing.

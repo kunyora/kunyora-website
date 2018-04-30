@@ -5,8 +5,7 @@ title: Router Component
 
 The Router component is one which helps in initializing a request handshake between 2 pages or screens. It is a low level api built using the common `render prop` reactJs pattern. This low level component does not work on mobile i.e `react-native` or any other Javascript based mobile native library except hybrid based i.e `Cordova`. This component is quite useful when you are building a web app that requires a `screen` to download some contents before pushing the user to the next route. The `Router`component is conceptually used in this scenario to instantiate the download before the Push.
 
-Also, the push can be implemented irrespective of the routing library being used. with the `Router` component, one could specify that screens should download both the `Component` and fetch the `queries` which would be displayed on the next screen before actually performing the route.
-Therefore, in this tutorial, we would be building a very small application which would show the `Router` component in action. Let's swing into action to see how this is done.
+Also, the push can be implemented irrespective of the routing library being used. with the `Router` component, one could specify that screens should download both the `Component` and fetch the `queries` which would be displayed on the next screen before actually performing the route. Therefore, in this tutorial, we would be building a very small application which would show the `Router` component in action. Let's swing into action to see how this is done.
 
 * [`Building a simple page navigator`](router_component.md#building-a-simple-page-navigator)
 * [`Setting up the routes`](router_component.md#setting-up-the-routes)
@@ -25,26 +24,26 @@ In this section, we would be setting up the routes for our navigator based appli
 /**
  * Index.js
  */
-import React from "react";
-import { render } from "react-dom";
-import KunyoraClient from "kunyora";
-import { KunyoraProvider } from "react-kunyora";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import {render} from 'react-dom';
+import KunyoraClient from 'kunyora';
+import {KunyoraProvider} from 'react-kunyora';
+import registerServiceWorker from './registerServiceWorker';
 
-import AppRoutes from "./AppRoutes";
+import AppRoutes from './AppRoutes';
 
 const client = KunyoraClient({
-  baseURL: "https://kunyora.herokuapp.com/",
-  nouns: [{ path: "notification", name: "notification" }]
+  baseURL: 'https://kunyora.herokuapp.com/',
+  nouns: [{path: 'notification', name: 'notification'}],
 });
 
-const App = props => (
+const App = (props) => (
   <KunyoraProvider client={client} store={client.store}>
     <AppRoutes />
   </KunyoraProvider>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
@@ -55,13 +54,13 @@ In the code above, we set up the client of the application using the `KunyoraPro
  *  AppRoutes.js
  */
 
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Initiator from "./Initiator";
-import Notification from "./Notification";
+import Initiator from './Initiator';
+import Notification from './Notification';
 
-const AppRoutes = props => (
+const AppRoutes = (props) => (
   <Router>
     <Switch>
       <Route path="/" component={Initiator} exact />
@@ -83,16 +82,15 @@ Let's create the `Initiator` screen of our application. This screen would be use
 /**
  * Initiator.js
  */
-import React from "react";
-import { Router } from "react-kunyora";
+import React from 'react';
+import {Router} from 'react-kunyora';
 
-const Initiator = props => (
+const Initiator = (props) => (
   <Router
     name="Notification"
-    loader={() => import("./Notification")}
-    resources={[{ operation: "getNotification" }]}
-    onRequestRoute={() => props.history.push("/notification")}
-  >
+    loader={() => import('./Notification')}
+    resources={[{operation: 'getNotification'}]}
+    onRequestRoute={() => props.history.push('/notification')}>
     {(routeState, fetchProgress, push) => (
       <button onClick={() => push()}>View Notifications</button>
     )}
@@ -114,12 +112,12 @@ Here, we would create the `Notification` component which would be used in displa
 /**
  * Notification.js
  */
-import React from "react";
-import { Query } from "react-kunyora";
+import React from 'react';
+import {Query} from 'react-kunyora';
 
-const Notification = props => (
+const Notification = (props) => (
   <Query operation="getNotification">
-    {notifications => {
+    {(notifications) => {
       let component =
         notifications.data !== undefined ? (
           <ul>

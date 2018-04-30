@@ -29,7 +29,7 @@ specifies the unique name for your application. If you are code splitting your a
 ### `loader`
 
 ```javascript
-<Router loader={() => import("./COMPONENT_TO_DYNAMICALLY_IMPORT")}>
+<Router loader={() => import('./COMPONENT_TO_DYNAMICALLY_IMPORT')}>
   {() => <SomeComponent />}
 </Router>
 ```
@@ -46,29 +46,23 @@ This component is used to dynamically import the component. It returns a promise
 <Router
   resources={[
     {
-      operation: "YOUR_OPERATION",
-      config: { ...someConfig },
-      fetchPolicy: "cache-and-network"
-    }
-  ]}
->
+      operation: 'YOUR_OPERATION',
+      config: {...someConfig},
+      fetchPolicy: 'cache-and-network',
+    },
+  ]}>
   {() => <SomeComponent />}
 </Router>
 ```
 
 This prop is used to specify an array of queries to prefetch before routing the user to the next screen.
 
-**options**
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| operation | string | Yes | This is the operation that is used to fetch the data. Please refer to the [Introduction to operation](introduction_to_operation.md) section of the documentation for a brief of how this is formed |
-| config | Object | No | this is similar to the axios config supplied to its instance. This is sent with the request. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) docs |
-| fetchPolicy | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" ) | No (defaults to ("cache-first")) | specify the fetch type for the query |
+**options** | Name | Type | Required | Description | | -- | -- | -- | -- | | operation | string | Yes | This is the operation that is used to fetch the data. Please refer to the [Introduction to operation](introduction_to_operation.md) section of the documentation for a brief of how this is formed | | config | Object | No | this is similar to the axios config supplied to its instance. This is sent with the request. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) docs | | fetchPolicy | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" ) | No (defaults to ("cache-first")) | specify the fetch type for the query |
 
 ### `onRequestRoute`
 
 ```javascript
-<Router onRequestRoute={() => this.props.history.push("/screen")}>
+<Router onRequestRoute={() => this.props.history.push('/screen')}>
   {() => <SomeComponent />}
 </Router>
 ```
@@ -82,10 +76,8 @@ is called after successfully downloading the `Component` and the `queries` neede
 # Parameters passed to this.props.children
 
 ```javascript
-<Router name="invitation" loader={() => import("./Invitation")}>
-  {({ error }, routeProgress, push) => (
-    <button onClick={push}> Navigate </button>
-  )}
+<Router name="invitation" loader={() => import('./Invitation')}>
+  {({error}, routeProgress, push) => <button onClick={push}> Navigate </button>}
 </Router>
 ```
 

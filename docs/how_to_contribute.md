@@ -25,7 +25,7 @@ Kunyora currently uses semantic versioning, which allows us to structure the lib
 
 ## Styling
 
-The library uses the [Airbnb Javascript]((https://github.com/airbnb/javascript/blob/master/README.md)) and [ReactJs](https://github.com/airbnb/javascript/blob/master/react/README.md) style guides
+The library uses the [Airbnb Javascript](<(https://github.com/airbnb/javascript/blob/master/README.md)>) and [ReactJs](https://github.com/airbnb/javascript/blob/master/react/README.md) style guides
 
 ## Making Pull Requests
 

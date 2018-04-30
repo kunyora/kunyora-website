@@ -62,11 +62,10 @@ specifies a component which should be used to indicate that a query has failed
 ```javascript
 <Query
   options={{
-    fetchPolicy: "SPECIFY_YOUR_FETCH_TYPE",
-    config: { ...axiosConfiguration }
-  }}
->
-  {queryResult => <div />}
+    fetchPolicy: 'SPECIFY_YOUR_FETCH_TYPE',
+    config: {...axiosConfiguration},
+  }}>
+  {(queryResult) => <div />}
 </Query>
 ```
 
@@ -76,13 +75,9 @@ specifies an object that contains the `fetchPolicy` and the `config` properties 
 | ---- | -------- |
 | func | No       |
 
-**options.fetchPolicy**
-| Type | Default | Required |
-| ---- | -------- | ------- |
-| enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" | No |
+**options.fetchPolicy** | Type | Default | Required | | ---- | -------- | ------- | | enum("cache-only", "network-only", "cache-and-network", "cache-first") | "cache-first" | No |
 
-**options.config**
-The configuration specified here is similar to that passed to the client instance. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the keys exposed by this property. This property is however not `required` when instantiating a request.
+**options.config** The configuration specified here is similar to that passed to the client instance. Please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the keys exposed by this property. This property is however not `required` when instantiating a request.
 
 ## Parameters passed to this.props.children
 
@@ -96,21 +91,16 @@ The configuration specified here is similar to that passed to the client instanc
 
 This is an object which contains the informations that specifies the state of the data being requested for. It contains the `loading` property which specifies that a request is in flight or not, an `error` property which specifies that the query has failed, a `isInitialDataSet` property which specifies that the initial data for the query has been added to the store and the `data` property which specifies the data sent by the Api.
 
-**Object properties of queryResult**
-| Name | Type | Description |
-|------ | ---- | ------ |
-|loading | bool | specifies that a request is in flight or not |
-| error | any | specifies that the query has failed |
-| data | any | specifies the data sent by the Api |
+**Object properties of queryResult** | Name | Type | Description | |------ | ---- | ------ | |loading | bool | specifies that a request is in flight or not | | error | any | specifies that the query has failed | | data | any | specifies the data sent by the Api |
 
 ### `fetchMore`
 
 ```javascript
 fetchMore({
-  config: { ...axiosConfiguration },
-  updateQuery: function(previousResult, { fetchMoreResult }) {
+  config: {...axiosConfiguration},
+  updateQuery: function(previousResult, {fetchMoreResult}) {
     return [...fetchMoreResult, previosResult];
-  }
+  },
 });
 ```
 
@@ -123,12 +113,12 @@ This is a function that should be used to fetch more queries from the Api. This 
 | Name            | Type | Description                                           |
 | --------------- | ---- | ----------------------------------------------------- |
 | previousResult  | any  | This contains the previous data returned by the query |
-| fetchMoreResult | any  | This contains the new response gotten by the api        |
+| fetchMoreResult | any  | This contains the new response gotten by the api      |
 
 ### `refetchQuery`
 
 ```javascript
-refetchQuery({ ...config });
+refetchQuery({...config});
 ```
 
 This is a function which can be used to refetch a query. The `config` object can be specified here and if it is not specified here, then the `Query`component defaults to using the initial configuration specified by the query. The `config` object is similar to that passed to the axios instance, so please refer to the [axios](https://github.com/axios/axios/blob/master/README.md) documentation for a full insight into the properties that can be used in the config object.

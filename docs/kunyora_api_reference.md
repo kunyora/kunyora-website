@@ -30,7 +30,7 @@ This section of the documentation covers the Api reference of `Kunyora`. It is d
 ### `baseURL`
 
 ```javascript
-let client = KunyoraClient({ baseURL: "ENTER_THE_URL_OF_YOUR_ENDPOINT" });
+let client = KunyoraClient({baseURL: 'ENTER_THE_URL_OF_YOUR_ENDPOINT'});
 ```
 
 This should contain your restful endpoint url
@@ -42,12 +42,12 @@ This should contain your restful endpoint url
 ### `nouns`
 
 ```javascript
-let client = kunyoraClient({ nouns: ["ENTER_YOUR_PATH"] });
+let client = kunyoraClient({nouns: ['ENTER_YOUR_PATH']});
 
-//OR 
+//OR
 
 let client = kunyoraClient({
-  nouns: [{ path: "ENTER_YOUR_PATH", name: "ENTER_AN_OPTIONAL_NAME" }]
+  nouns: [{path: 'ENTER_YOUR_PATH', name: 'ENTER_AN_OPTIONAL_NAME'}],
 });
 ```
 
@@ -57,11 +57,7 @@ specifies an array of routes or paths exposed by the restful api
 | ---------------------------------- | -------- |
 | array(enum(string, config.Object)) | Yes      |
 
-**config.Object**
-| Name | Type | Required | Description |
-| ---- | ------ | ------- | ---------- |
-| path | string | Yes | contains the route to access
-| name | string | No | contains a name that can be camel-cased with a default operation to access a specific route e.g we could have getName. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations|
+**config.Object** | Name | Type | Required | Description | | ---- | ------ | ------- | ---------- | | path | string | Yes | contains the route to access | name | string | No | contains a name that can be camel-cased with a default operation to access a specific route e.g we could have getName. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations|
 
 ### `thenables`
 
@@ -72,10 +68,10 @@ let client = kunyoraClient({
     get: function(response, name) {
       /*do something. Mostly used for general purposes*/
     },
-    ["ENTER_THE_OPERATION_TO_HANDLE_HERE"]: function(response) {
+    ['ENTER_THE_OPERATION_TO_HANDLE_HERE']: function(response) {
       /* do something. Mostly used for specific purposes */
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -87,19 +83,19 @@ specifies an object that you should use to handle success responses from your ap
 
 **Operations you can use with thenables as keys**
 
-| Name             | Type     | Required | Description                                                                                                                                                                                                                                                                    |
-| ---------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                    |
-| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
-| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                    |
-| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                                 |
-| partUpdate | function | No | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables |
+| Name             | Type     | Required | Description                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                                      |
+| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                                    |
+| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                                      |
+| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                                   |
+| partUpdate       | function | No       | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                                    |
 | `your_operation` | function | No       | this is a specific operation that `kunyoraClient` checks to handle any incoming success response. This is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations |
 
 **parameters passed to the operations supplied as keys to thenables**
 
-| Name     | Type   | operations                                       | desciption                                                                                                             |
-| -------- | ------ | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Name     | Type   | operations                                                | desciption                                                                                                             |
+| -------- | ------ | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | response | Object | get, delete, create, update, partUpdate, `your operation` | This is a response object containing details used in making the resquest and the actual success response from your api |
 
 ### `catchables`
@@ -111,10 +107,10 @@ let client = kunyoraClient({
     get: function(error, name) {
       /*do something. Mostly used for general purposes*/
     },
-    ["ENTER_THE_OPERATION_TO_HANDLE_HERE"]: function(error) {
+    ['ENTER_THE_OPERATION_TO_HANDLE_HERE']: function(error) {
       /* do something. Mostly used for specific purposes */
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -126,19 +122,19 @@ specifies an object that you should use to handle error responses from your api.
 
 **operations you can use with catchables as keys**
 
-| Name             | Type     | Required | Description                                                                                                                                                                                                                                                                  |
-| ---------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
-| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                |
-| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                  |
-| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                               |
-| partUpdate | function | No | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables |
+| Name             | Type     | Required | Description                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------- | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| get              | function | No       | can be used as a key to handle all get requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                             |
+| create           | function | No       | can be used as a key to handle all posts requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                           |
+| update           | function | No       | can be used as a key to handle all Put requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                             |
+| delete           | function | No       | can be used as a key to handle all delete requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                          |
+| partUpdate       | function | No       | can be used as a key to handle all patch requests which do not have a specific operation specified in the thenables                                                                                                                                                                                                                                                                           |
 | `your_operation` | function | No       | this is the operation that `kunyoraClient` checks to handle any incoming error response. This is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Refer to the [Introduction to operation Docs](introduction_to_operation.md) to learn more about operations |
 
 **parameters passed to the operations supplied as keys to catchables**
 
-| Name  | Type   | Operations                                       | desciption                                                                                                        |
-| ----- | ------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Name  | Type   | Operations                                                | desciption                                                                                                         |
+| ----- | ------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | error | Object | get, delete, create, partUpdate, update, `your operation` | This is an error object containing details used in making the resquest and the actual error response from your api |
 
 ## Methods
@@ -146,7 +142,7 @@ specifies an object that you should use to handle error responses from your api.
 ### `Operations`
 
 ```javascript
-client["YOUR_OPERATION"]({ ...axios_instance_config });
+client['YOUR_OPERATION']({...axios_instance_config});
 ```
 
 used to communicate with your restful backend. The operation is formed from camel-casing one of the five default operations with the `name` property specified in your `nouns` or your `path` property incase a `name` property is not specified. Please check out the [InDepth Tutorial](kunyora_tutorial.md) section of the documentation for a practical example on how this is done.
@@ -162,17 +158,13 @@ client.middleware({
   },
   useAfterResponse: function(response) {
     // do something with any response gotten
-  }
+  },
 });
 ```
 
 specifies two `optional` callbacks that would be used by the application if present before a request is sent and after a response is gotten.
 
-**parameters passed to the middleware's object argument**
-| Name | Type | Required | Passed Parameter Type | Description |
-| ---- | ---- | -------- | -------------------- | ----------- |
-|useBeforeRequest | function | No | Object | This function is called before a request is sent. You must return the headers here so the the client instance could make use of it. This function is passed the header object as a parameter |
-|useAfterResponse | function | No | Object | This function is called after a response is gotten but before it is handled by any client side code if present. This function is passed the response object as a parameter |
+**parameters passed to the middleware's object argument** | Name | Type | Required | Passed Parameter Type | Description | | ---- | ---- | -------- | -------------------- | ----------- | |useBeforeRequest | function | No | Object | This function is called before a request is sent. You must return the headers here so the the client instance could make use of it. This function is passed the header object as a parameter | |useAfterResponse | function | No | Object | This function is called after a response is gotten but before it is handled by any client side code if present. This function is passed the response object as a parameter |
 
 ### `Store`
 
@@ -191,9 +183,9 @@ For now, we have not found any external usage for this module yet. However, it i
 ### `Axios instance config`
 
 ```javascript
-let client = kunyoraClient({ ...config });
+let client = kunyoraClient({...config});
 
-client["YOUR_OPERATION"]({ params: {}, data: {}, ...otherAxiosConfigs });
+client['YOUR_OPERATION']({params: {}, data: {}, ...otherAxiosConfigs});
 ```
 
 The instance config is very similar to that provided by axios. Please refer to the [axios documentation](https://github.com/axios/axios/blob/master/README.md)
