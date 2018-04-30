@@ -31,9 +31,10 @@ Please check the docusaurus documentation for an overview of the website structu
 5.  Check your package.json file to see how to run locally. it would most likely be `yarn run start` or `npm start`
 6.  `open http://localhost:3000/kunyora/versions.html` to see other versions
 7.  Test your changes with other browsers for compartibility.
-8.  `git add -A && git commit -m My commit message` (replacing `My commit message` with your own message)
-9.  `git push my-fork-name the-name-of-my-branch`
-10. Go to the `kunyora-website repo`, you should see the recently pushed branch.
+8. `yarn run prettier` to format your code.
+9.  `git add -A && git commit -m My commit message` (replacing `My commit message` with your own message)
+10.  `git push my-fork-name the-name-of-my-branch`
+11. Go to the `kunyora-website repo`, you should see the recently pushed branch.
 
 ## License
 
