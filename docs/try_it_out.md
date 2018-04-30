@@ -9,7 +9,7 @@ Yah!!! you can now try kunyora and react-kunyora online.
 
 **Try Kunyora online**
 
-if you're just interested in playing around with Kunyora, you can use an online code playground. Try a Hello World template on [CodeSandbox](https://codesandbox.io/s/44xo1qrlx)
+if you're just interested in playing around with Kunyora, you can use an online code playground. Try a Hello World template on [CodeSandbox](https://codesandbox.io/s/p5kvlrjqqm)
 
 **Try React-Kunyora online**
 
