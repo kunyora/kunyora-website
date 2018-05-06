@@ -4,7 +4,7 @@ const repoUrl = "https://github.com/kunyora/kunyora";
 
 const siteConfig = {
   title: "Kunyora",
-  tagline: "A flexible Rest Client for Javascript web and native applications",
+  tagline: "A flexible and disposable Rest Client for Javascript applications",
   url: "https://kunyora.github.io",
   baseUrl: "/kunyora/",
   headerLinks: [

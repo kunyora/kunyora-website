@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A flexible Rest Client for Javascript web and native applications",
+    "tagline": "A flexible and disposable Rest Client for Javascript applications",
     "community_tutorials": "Community Tutorials",
     "connector_component_api_overview": "Connector Api Overview",
     "connector_component": "Connector Component",
