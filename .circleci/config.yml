@@ -1,0 +1,59 @@
+# If you only one circle to run on direct commits to master, you can uncomment this out
+# and uncomment the filters: *filter-only-master down below too
+#
+aliases:
+ - &filter-only-master
+    branches:
+      only:
+        - master
+
+  - &filter-ignore-gh-pages
+    branches:
+      ignore: gh-pages
+
+
+defaults: &defaults
+  docker:
+  # specify the version you desire here
+  - image: circleci/node:7.10
+
+
+version: 2
+jobs:
+  tests: 
+    <<: *defaults
+    steps:
+      - checkout 
+      - run:
+          name: Check Prettier 
+          command: cd website && yarn ci-check
+      - run:
+          name: Run Test Suites 
+          command: yarn test
+      - run:
+          name: Test Static Wesbite Builds 
+          command: yarn run build 
+
+  deploy-website:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Deploying to GitHub Pages
+          command: |
+            git config --global user.email "kunyora@users.noreply.github.com"
+            git config --global user.name "Kunyora Deployment Script"
+            echo "machine github.com login kunyora password $GITHUB_TOKEN" > ~/.netrc
+            cd website && yarn install && GIT_USER=kunyora yarn run publish-gh-pages
+
+workflows:
+  version: 2
+
+  website: 
+    jobs:
+      - tests:
+          filters: *filter-ignore-gh-pages
+      - deploy-website:
+          requires:
+            - tests
+          filters: *filter-only-master
