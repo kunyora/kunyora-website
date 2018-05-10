@@ -16,7 +16,9 @@ After recently publishing the Kunyora library and making a recent tweet about us
 
 ## My Experience with writing indisposable code
 
-About 3 years ago during my second year in the University, I had the opportunity to work with a very small group of friends building a web based student platform. At the time, we were building the platform using an agile approach and we needed to iterate fast since we got immediate feedbacks from the customer which led to constantly changing the code base. We had to delete some html elements and also remove the css they were bound to. However, as the code base of our web app grew larger, we found out that it became more difficult to delete code. The css files consisted of a lot of class names, and sometimes we were clueless and afraid to remove some classes because of the fear of disorganization it could cause to some html elements using them that we had no knowledge of. Well, the only thing we did at the time was to leave these class names and add new class names which were mapped to the newly added elements. Admittedly, we made the wrong decisions because our css files grew larger ๏︿๏. Shortly after finishing up with the project, I found out that the we had those issues because the software wasn't disposable. I felt that if we had a better tool to make our code base more disposable, it would have saved us a lot of hustle.
+Have you ever been afraid to remove a css class name because of the fear that it could disorganise your UI especially when building large applications ?
+
+About some years ago, I had the opportunity to work with a very small group of friends building a web based student platform. At the time, we were building the platform using an agile approach and we needed to iterate fast since we got immediate feedbacks from the customer which led to constantly changing the code base. We had to delete some html elements and also remove the css they were bound to. However, as the code base of our web app grew larger, we found out that it became more difficult to delete code. The css files consisted of a lot of class names, and sometimes we were clueless and afraid to remove some classes because of the fear of disorganization it could cause to some html elements using them that we had no knowledge of. Well, the only thing we did at the time was to leave these class names and add new class names which were mapped to the newly added elements. Admittedly, we made the wrong decisions because our css files grew larger ๏︿๏. Shortly after finishing up with the project, I found out that the we had those issues because the software wasn't disposable. I felt that if we had a better tool to make our code base more disposable, it would have saved us a lot of hustle.
 
 ## An approach to make the code base disposable
 
@@ -37,76 +39,46 @@ Fast forward some years later, I found ReactJs and styled-components and decided
 
 ## Problems with writing indisposable Api code
 
-```html
-  <button onclick="sendNotification()">Send Receiver</button>
-
-  <script>
-    function sendNotification(){
-      axios({
-        ......someAxiosConfigOption
-      }).then(function(res){
-        deleteNotification()
-      }).catch(function(err){
-        console.error(err)
-      })
-    }
-
-    function deleteNotification(){
-        axios({
-        ......someAxiosConfigOption
-      }).then(function(res){
-        //perform some complex refetch of some sort
-        fetchAllNewOperations();
-      }).catch(function(err){
-        console.error(err)
-      })
-    }
-  </script>
+```javascript
+  axios({
+    method: "post",
+    baseURL: "someURL"
+  }).then(data => {
+    ...doSomething
+  })
 ```
 
-Fast-forward to 2018, I noticed there were still lots of imperative Api code bases out there written with axios which polluted declarative environments provided by libraries like ReactJs or VueJs. Also it became very difficult to delete code if one is carrying out lots of complex operations such as refetching some queries after a user must have performed a post operation. We now see a lot of code littered with then and catch blocks and a lot of structured **GOTO** unaware calls linked to functions to perform some other task. Even in an async-await code base, indisposability is still noticed. These complex imperative calls have taken away disposability, since developers need to keep track of calls made by axios that should be deleted.
+Fast-forward to 2018, I noticed there were still lots of imperative Api code bases out there written with axios which polluted declarative environments provided by libraries like ReactJs or VueJs. Also it became very difficult to delete code if one is carrying out lots of complex operations such as refetching some queries after a user must have performed a post operation.
 
-Functional programming is wonderful but it doesn't totally mean that everyone using this paradigm gets to write disposable functions. Infact, it's possible to write highly muggled and indisposable functions when deeply composing functions. At times, mutations across codebases could also lead to indisposable code if variables have two to many places where they are changed.
+Imagine you were building a complex web application which had a `/feeds` path and this path was exposed to the get, post , patch and delete request methods. Here are two quick questions:
+
+* How would you structure calls to this path such that a new engineering recruit could easily tell all the methods this path was exposed to?
+* How predictable can your application be if calls to this path were made at various views in your application?
+
+Finding answers to the questions above could depend on one's level of expertise in developing predictable software. However, if the web application was not built to be predictable then its definately not disposable. Functional programming is wonderful but it doesn't totally mean that everyone using this paradigm gets to write disposable functions. Infact, it's possible to write indisposable functions when deeply composing functions. At times, mutations across codebases could also lead to indisposable code if variables have two to many places where they are changed.
 
 ## Kunyora's approach to writing disposable Api code
 
-```html
-  <button onclick="mutate()">Send Receiver</button>
-
-  <script>
-    let client = window.KunyoraClient({
-      baseURL: "YOUR_URL",
-      nouns: [...arrayOfPaths],
-      thenables: {
-        createNotification: function(res){
-          client.deleteNotification();
-        },
-        deleteNotification: function(res){
-          // do something with the response
-        }
-      },
-      catchables: function(res){
-        createNotification: function(err){
-          console.error(err)
-        },
-        deleteNotification: function(err){
-          console.error(err)
-        }
-      }
-    })
-
-    function mutate(){
-      client.createNotification({
-        ...someAxiosBasedConfig
-      })
-    }
-  </script>
+```javascript
+KunyoraClient({
+  ...someOtherSetupOptions,
+  thenables: {
+    key: value,
+  },
+  catchables: {
+    key: value,
+  },
+});
 ```
 
-However, we have found ways to create disposable codebases either through component based architecture, immutability, composition, css modules, css-in-js or various other techniques. Kunyora also addresses the problems of indisposability by providing you with two(2) objects `thenables` and `catchables` that allows you to handle both success and error calls using a `key-value based map` when performing api requests. With a declarative component based environments like ReactJs, Kunyora achieves better disposability by leveraging on the component-based architecture of this libraries. Its totally fine if introducing disposability to your code base brings a little redundancy, all that matters is that everyone working on the project feels comfortable throwing code away. 
+However, we have found ways to create disposable codebases either through component based architecture, immutability, composition, css modules, css-in-js or various other techniques. Kunyora also addresses the problems of indisposability by exposing a path to all the request methods and providing you with two(2) objects `thenables` and `catchables` that allows you to handle both success and error calls using a `key-value based map` when performing api requests. With a declarative component based environments like ReactJs, Kunyora achieves better disposability by leveraging on the component-based architecture of this libraries. Its totally fine if introducing disposability to your code base brings a little redundancy, all that matters is that everyone working on the project feels comfortable throwing code away.
 
-***Sarah Drasner*** made a tweet recently and I quote
+Since Kunyora is built on axios, it allows you perform most but not all functionalities provided by the axios library.
+
+**_Sarah Drasner_** made a tweet recently and I quote
 
 > Someone was recently telling me they were a "Code Ninja". I don't want to work with a Ninja, they leave a bloody mess. I want to work with a "Code Janitor". Comes in the middle of the night, cleans things up, you only know they were there because everything is organized and tidy.
 
-A code Janitor cleans up the code base by making sure that its highly disposable. Lastly, It really doesn't matter if you are a functional programmer or a classical programmer, both coding paradigms offer several ways to write truly disposable code and I believe that apart from reusability and composability, disposability is also a very important coding feature to consider when building softwares.
+A code Janitor cleans up the code base by making sure that its highly disposable. Lastly, It really doesn't matter if you are a functional programmer or a classical programmer, both coding paradigms offer several ways to write truly disposable code and I believe that apart from reusability and composability, disposability is also a very important coding feature to consider when building softwares. A predictable software is a disposable software.
+
+You might want to check out Kunyora's [Vision](/kunyora/docs/vision.html) and the [Getting Started Tutorial](/kunyora/docs/getting_started.html)
