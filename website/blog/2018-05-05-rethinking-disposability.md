@@ -75,7 +75,7 @@ However, we have found ways to create disposable codebases either through compon
 
 Since Kunyora is built on axios, it allows you perform most but not all functionalities provided by the axios library.
 
-**_Sarah Drasner_** made a tweet recently and I quote
+**_Sarah Drasner_** made a [tweet](https://twitter.com/sarah_edo/status/991421712989208576) recently and I quote
 
 > Someone was recently telling me they were a "Code Ninja". I don't want to work with a Ninja, they leave a bloody mess. I want to work with a "Code Janitor". Comes in the middle of the night, cleans things up, you only know they were there because everything is organized and tidy.
 
