@@ -10,6 +10,10 @@ aliases:
     branches:
       ignore: gh-pages
 
+  - &yarn
+    |
+      yarn add prettier --exact 
+
 defaults: &defaults
   docker:
   # specify the version you desire here
@@ -21,6 +25,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout 
+      - run: *yarn
       - run:
           name: Check Prettier 
           command: cd website && yarn ci-check
