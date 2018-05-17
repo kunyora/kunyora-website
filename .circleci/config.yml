@@ -12,7 +12,7 @@ aliases:
 
   - &npm
     |
-      sudo npm install -g prettier jest
+      sudo npm install -g prettier
 
 defaults: &defaults
   docker:
@@ -29,9 +29,6 @@ jobs:
       - run:
           name: Check Prettier 
           command: cd website && yarn ci-check
-      - run:
-          name: Run Test Suites 
-          command: cd website && yarn run test
       - run:
           name: Test Static Wesbite Builds 
           command: cd website && yarn run build 
