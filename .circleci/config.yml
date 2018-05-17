@@ -12,7 +12,7 @@ aliases:
 
   - &npm
     |
-      npm install -g prettier 
+      sudo npm install -g prettier 
 
 defaults: &defaults
   docker:
