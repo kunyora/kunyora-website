@@ -31,7 +31,7 @@ jobs:
           command: cd website && yarn ci-check
       - run:
           name: Test Static Wesbite Builds 
-          command: cd website && yarn run build 
+          command: cd website && yarn install && yarn run build 
 
   deploy-website:
     <<: *defaults
