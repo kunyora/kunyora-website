@@ -10,9 +10,9 @@ aliases:
     branches:
       ignore: gh-pages
 
-  - &yarn
+  - &npm
     |
-      yarn add prettier --exact 
+      npm install -g prettier 
 
 defaults: &defaults
   docker:
@@ -25,7 +25,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout 
-      - run: *yarn
+      - run: *npm
       - run:
           name: Check Prettier 
           command: cd website && yarn ci-check
