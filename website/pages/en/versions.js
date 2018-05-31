@@ -53,7 +53,9 @@ class Versions extends React.Component {
                 <tr>
                   <th>master</th>
                   <td>
-                    <a href="#">Documentation</a>
+                    <a href="/kunyora/docs/next/getting_started.html">
+                      Documentation
+                    </a>
                   </td>
                   <td>
                     <a href="#">Release Notes</a>
@@ -71,10 +73,14 @@ class Versions extends React.Component {
                 {versions.map(
                   version =>
                     version !== latestVersion && (
-                      <tr>
+                      <tr key={version}>
                         <th>{version}</th>
                         <td>
-                          <a href={"#"}>Documentation</a>
+                          <a
+                            href={`/kunyora/docs/${version}/getting_started.html`}
+                          >
+                            Documentation
+                          </a>
                         </td>
                         <td>
                           <a href={"#"}>Release Notes</a>
@@ -85,10 +91,9 @@ class Versions extends React.Component {
               </tbody>
             </table>
             <p>
-              You can find past versions of this project{" "}
+              You can find past versions of this project
               <a href="https://github.com/kunyora/kunyora" target="blank">
-                {" "}
-                on GitHub{" "}
+                on GitHub
               </a>.
             </p>
           </div>
