@@ -38,7 +38,7 @@ class Versions extends React.Component {
                     </a>
                   </td>
                   <td>
-                    <a href="#">Release Notes</a>
+                    <a href="https://github.com/kunyora/kunyora/releases/tag/v0.1.1">Release Notes</a>
                   </td>
                 </tr>
               </tbody>
