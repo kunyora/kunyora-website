@@ -66,16 +66,32 @@ class Footer extends React.Component {
             <h5>More</h5>
             <a href={this.props.config.baseUrl + 'blog'}>Blog</a>
             <a href="https://github.com/kunyora/kunyora">GitHub</a>
-            <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/kunyora/kunyora/stargazers"
-              data-show-count={true}
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
-              Star
-            </a>
+            <p>
+              <span style={{color: '#fff', fontSize: 12}}>Kunyora </span>
+              <a
+                className="github-button"
+                href={this.props.config.repoUrl}
+                data-icon="octicon-star"
+                data-count-href="/kunyora/kunyora/stargazers"
+                data-show-count={true}
+                data-count-aria-label="# stargazers on GitHub"
+                aria-label="Star this project on GitHub">
+                Star
+              </a>
+            </p>
+            <p style={{marginTop: 10}}>
+              <span style={{color: '#fff', fontSize: 12}}>React Kunyora </span>
+              <a
+                className="github-button"
+                href="https://github.com/kunyora/react-kunyora"
+                data-icon="octicon-star"
+                data-count-href="/kunyora/react-kunyora/stargazers"
+                data-show-count={true}
+                data-count-aria-label="# stargazers on GitHub"
+                aria-label="react-kunyora">
+                Star
+              </a>
+            </p>
           </div>
         </section>
         {/* <a
