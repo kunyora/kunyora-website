@@ -17,9 +17,9 @@ For this installation, you need to set up [Node](https://nodejs.org/en/download)
 ```powershell
   #For use in a Javasript non-native linked environment
 
-  npm install --save kunyora
+  npm install --save-exact kunyora@0.1.1
   # or with yarn
-  yarn add kunyora
+  yarn add kunyora@0.1.1 --exact
 ```
 
 If you are building a single page application, and you have [ReactJs](https://reactjs.org/docs/add-react-to-a-new-app.html) or [React Native](https://facebook.github.io/react-native/docs/getting-strted.html) set up as your development environment, you would want to setup react-Kunyora. To set up react-kunyora, cd into the project directory and enter the following commands.
@@ -27,18 +27,18 @@ If you are building a single page application, and you have [ReactJs](https://re
 ```powershell
   #For use with reactJs
 
-  npm install --save react-kunyora
+  npm install --save-exact react-kunyora@0.1.0
   #or with yarn
-  yarn add react-kunyora
+  yarn add react-kunyora@0.1.0 --exact
 ```
 
 ### `Installation using cdn links`
 
-If you are not building a single page application, you can use Kunyora and/or react-kunyora from the unpkg CDN. Kunyora would be available in your browser as `window.KunyoraClient`. Add the script below to your html template. To load a specific version of kunyora and react-kunyora, Just replace `0.1.0` with the version number.
+If you are not building a single page application, you can use Kunyora from the unpkg CDN. Kunyora would be available in your browser as `window.kunyoraClient`. Add the script below to your html template. To load a specific version of kunyora, Just replace `0.1.1` with the version number.
 
 ```html
-  <script crossorigin src="https://unpkg.com/kunyora@0.1.0/dist/kunyora.js"></script>
-  <script crossorigin src="https://unpkg.com/react-kunyora@0.1.0/dist/react-kunyora.js"></script>
+  <script crossorigin src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script crossorigin src="https://unpkg.com/kunyora@0.1.1/dist/kunyora.min.js"></script>
 ```
 
 # What's Next?
