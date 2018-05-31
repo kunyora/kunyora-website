@@ -58,7 +58,7 @@ class Versions extends React.Component {
                     </a>
                   </td>
                   <td>
-                    <a href="#">Release Notes</a>
+                    <a href="https://github.com/kunyora/kunyora/blob/master/README.md">Release Notes</a>
                   </td>
                 </tr>
               </tbody>
@@ -83,7 +83,7 @@ class Versions extends React.Component {
                           </a>
                         </td>
                         <td>
-                          <a href={"#"}>Release Notes</a>
+                          <a href={`https://github.com/kunyora/kunyora/releases/tag/v${version}`}>Release Notes</a>
                         </td>
                       </tr>
                     )
@@ -92,7 +92,7 @@ class Versions extends React.Component {
             </table>
             <p>
               You can find past versions of this project
-              <a href="https://github.com/kunyora/kunyora" target="blank">
+              <a href="https://github.com/kunyora/kunyora/releases" target="blank">
                 on GitHub
               </a>.
             </p>
