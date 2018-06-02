@@ -28,9 +28,9 @@ If you are building a single page application, and you have [ReactJs](https://re
 ```powershell
   #For use with reactJs
 
-  npm install --save-exact react-kunyora@0.1.0
+  npm install --save-exact react-kunyora@0.1.1
   #or with yarn
-  yarn add react-kunyora@0.1.0 --exact
+  yarn add react-kunyora@0.1.1 --exact
 ```
 
 ### `Installation using cdn links`
