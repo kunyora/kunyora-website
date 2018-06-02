@@ -14,7 +14,7 @@ const siteConfig = {
     { href: repoUrl, label: "Github" },
     {
       href: "https://github.com/kunyora/react-kunyora",
-      label: "React-Kunyora (0.1.0)"
+      label: "React-Kunyora (0.1.1)"
     },
     { search: true }
   ],
